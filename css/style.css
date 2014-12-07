@@ -1,0 +1,163 @@
+html,body{padding:0px;margin:0px;}
+.container{width:100%}
+.top{background: url("../images/v2/bg.png") repeat-x;background-size:contain;height:329px;width:100%;}
+.w_320{width:320px;}
+.w_50ps{width:50%;}
+.w_60ps{width:60%;}
+.h_33px{height:33px;}
+.mg_t10{margin-top:10px;}
+.mg_t40{margin-top:40px;}
+.mg_l10{margin-left:5px;}
+.mg_l27{margin-left:27px;}
+.mg_l37{margin-left:37px;}
+.pd_l10{padding-left:10px;}
+.mg_auto{margin:auto;}
+.al_center{text-align: center;}
+.float_left{float:left;}
+.color_31{color:#311800;}
+.color_33{color:#ff3000;}
+.color_oob{color:#00b1bc;}
+.color_ffa{background:#ffa03c;}
+.color_fff{color:#fff;}
+.color_782{color:#782500;}
+.w_280{width:280px;}
+.bg_ff2{background: #ff2d46!important;}
+.bg_00{background: #000!important;}
+.font_weight{font-weight: bold;}
+.content{width:100%;height:329px;border:1px solid transparent;}
+.content .title{margin:10px 7px;}
+.content .title .img{float:left;width:44px;height:44px;}
+.content .title .img img{border-radius: 22px;}
+.content .title .text{float:left;margin-left:5px;font-size:13px;word-break: break-all;line-height: 16px;}
+.content .title .text .img{background: url("../images/v2/left_bg.png") no-repeat;background-size:contain;height:18px;width:7px;margin-top:18px;}
+.content .title .text .box{border-radius: 4px;background: white;width:240px;padding:5px;}
+.content .product{width:100%;height:160px;}
+.product .bg{z-index:0;background:url("../images/v2/stars.jpg") no-repeat;background-size: 320px auto;position: relative;margin-top:-76px;width:320px;height:60px;}
+.product .pro{z-index:1;width:185px;margin-left:85px;height:160px;position: relative}
+.product .pro .img{width:160px;height:160px;}
+.product .pro .shadow{background: url('../images/v2/shadow.png') no-repeat;background-size: auto 160px;height:160px;width:25px;}
+.content .btn{width:320px;height:65px;margin:10px auto;}
+.btn .price{width:90px;height:30px;font-size:13px;color:white;margin-top:20px;}
+.btn .price .left{width:30px;background: #616161;text-align: center;line-height:30px;}
+.btn .price .right{width:45px;background: #868686;text-align: center;line-height:30px;}
+.btn .arrow{background:url("../images/v2/left.png") no-repeat;background-size: auto 30px;width:13px;height:30px;margin-top:17px;}
+.btn .circle{transition: all 0.30s ease-in-out;-webkit-transition: all 0.30s ease-in-out;-moz-transition: all 0.30s ease-in-out;width:66px;height:66px;border-radius: 33px;background: #ff2d46;}
+.btn .circle .img{background: url("../images/v2/price.png") no-repeat;font-size:18px;color:#fff;width:47px;height:20px;background-size: contain;margin: 16px auto;}
+.explain{width:320px;margin:11px auto;}
+.explain .title{text-align: center;color:#ff2d46;font-size:18px;font-weight: bold;}
+.explain .text{font-size:14px;margin-top:10px;word-break: break-all;line-height: 22px;}
+.logo{background: url("../images/v2/logo_red.png") no-repeat;background-size: auto 28px;width:90px;height:28px;margin:60px auto 10px; }
+.clear{clear:both;}
+.btn .circle .img{position:relative;animation:myfirst 0.5s linear 0.5s infinite alternate;-moz-animation:myfirst  0.5s linear  0.5s infinite alternate; -webkit-animation:myfirst  0.5s linear  0.5s infinite alternate;-o-animation:myfirst  0.5s linear  0.5s infinite alternate;}
+.btn .circle{position:relative;animation:bgmove  0.5s linear  0.5s infinite alternate;-moz-animation:bgmove  0.5s linear  0.5s infinite alternate; -webkit-animation:bgmove  0.5s linear  0.5s infinite alternate;-o-animation:bgmove  0.5s linear  0.5s infinite alternate;}
+/*杀价成功页面*/
+.success{background: url("../images/v2/success_bg.jpg") repeat-x;background-size: contain;height: 162px; width:100%;}
+.success .s_logo{width:193px;height:34px;background: url("../images/v2/success.png") no-repeat;background-size:contain;margin:0px auto 10px;}
+.success .price{font-size:18px;color:white;font-weight: bold;text-align: center;margin:10px auto 40px}
+.success .explain .text{font-size:12px!important;line-height: 12px;}
+
+.button{border:0px;width:10em;display:block;margin:auto;padding:9px;background: #f27922;background-image: url("../images/v2/logo.png");background-size:auto 14px;background-repeat: no-repeat;background-position: 10px center;text-indent: 15px;color:white;font-size:13px;}
+.buttonTwo{border:0px;width:106px;;padding:9px;background: #f27922;background-image: url("../images/v2/friends.png");background-size:auto 14px;background-repeat: no-repeat;background-position: 7px center;text-indent: 13px;color:white;font-size:13px;}
+.success_mg{width:320px;margin:11px auto 16px;}
+/*登陆注册也*/
+/*.login_bg{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#e14500), to(#ffa03c));}*/
+.login_bg{background-image: url("../images/v2/login_bg.jpg");background-repeat: repeat-x;  width:100%;height:416px;background-size: 100% 416px; font-size:12px;}
+.login .title{margin:0px auto 33px;background: url("../images/v2/login_logo.png") no-repeat;background-size: 123px auto;width:123px;height:39px;}
+.login_bg input[type="text"],.login_bg input[type="password"]{background: white;width:200px;height:30px;border-radius: 5px;border:0px;padding-left:5px;}
+.login_btn{width:200px;margin:10px auto;}
+.login_btn .log{background: #ffbb39;border-radius: 3px 0px 0px 3px;color:white;text-align: center;padding:9px 0px;border:0px;}
+.login_btn .reg{background: #482309;border-radius: 0px 3px 3px 0px;color:white;text-align: center;padding:9px 0px;border:0px;}
+.reg_success{width:200px;height:30px;background: url("../images/v2/regsuccess.png") no-repeat;background-size:contain;margin:0px auto 10px;background-size:contain}
+.reg_logo{background: url("../images/v2/vqp_logo.png") no-repeat; background-size:contain; width:65px;height:65px;margin:20px auto 5px;}
+.reg_btn{width:120px;height:30px;border-radius: 30px;background: white;color:#f27922;background-image:url("../images/v2/reg_btn.png");background-size: auto 14px;background-position:21px center;background-repeat: no-repeat;border:0px;text-indent: 21px}
+.reg_b_logo{background:url("../images/v2/login_logo.png") no-repeat;background-size: contain;width:123px;height:39px;margin:40px auto;}
+.sharedown{width:280px;;padding:30px 0px;}
+.sharedown .eat{background: white;padding:7px 11px;}
+.sharedown .eat img{border-radius:4px;}
+.sharetitle{color: #383838;line-height: 17px;}
+.sharedis{color:#999;line-height: 15px;word-break: break-all;}
+.sharecontent{word-break: break-all;line-height: 16px;}
+@keyframes myfirst
+{
+    0%  {left:0px; top:15px;}
+    50%  {left:0px; top:0px;}
+    100%  {left:0px; top:15px;}
+}
+@-moz-keyframes myfirst
+{
+    0%  {left:0px; top:15px;}
+    50%  {left:0px; top:0px;}
+    100%  {left:0px; top:15px;}
+}
+@-webkit-keyframes myfirst
+{
+    0%  {left:0px; top:15px;}
+    50%  {left:0px; top:0px;}
+    100%  {left:0px; top:15px;}
+}
+@-o-keyframes myfirst
+{
+    0%  {left:0px; top:15px;}
+    50%  {left:0px; top:0px;}
+    100%  {left:0px; top:15px;}
+}
+@keyframes myfirst
+{
+    0%  {left:0px; top:15px;}
+    50%  {left:0px; top:0px;}
+    100%  {left:0px; top:15px;}
+}
+@-moz-keyframes bgmove
+{
+    0%  {background:#ff2d46;box-shadow: 0 0 5px rgba(255, 45, 70, 3);-webkit-box-shadow: 0 0 5px rgba(255, 45, 70, 3); -moz-box-shadow: 0 0 5px rgba(255, 45, 70, 3);}
+    50% {background:#db5411;box-shadow: 0 0 5px rgba(219, 84, 17, 3);-webkit-box-shadow: 0 0 5px rgba(219, 84, 17, 3); -moz-box-shadow: 0 0 5px rgba(219, 84, 17, 3);}
+    100% {background:#db8d11;box-shadow: 0 0 5px rgba(251, 237, 9, 2);-webkit-box-shadow: 0 0 5px rgba(251, 237, 9, 2); -moz-box-shadow: 0 0 5px rgba(251, 237, 9, 2);}
+}
+@-webkit-keyframes bgmove
+{
+    0%  {background:#ff2d46;box-shadow: 0 0 5px rgba(255, 45, 70, 3);-webkit-box-shadow: 0 0 5px rgba(255, 45, 70, 3); -moz-box-shadow: 0 0 5px rgba(255, 45, 70, 3);}
+    50% {background:#db5411;box-shadow: 0 0 5px rgba(219, 84, 17, 3);-webkit-box-shadow: 0 0 5px rgba(219, 84, 17, 3); -moz-box-shadow: 0 0 5px rgba(219, 84, 17, 3);}
+    100% {background:#db8d11;box-shadow: 0 0 5px rgba(251, 237, 9, 2);-webkit-box-shadow: 0 0 5px rgba(251, 237, 9, 2); -moz-box-shadow: 0 0 5px rgba(251, 237, 9, 2);}
+}
+@-o-keyframes bgmove
+{
+    0%  {background:#ff2d46;box-shadow: 0 0 5px rgba(255, 45, 70, 3);-webkit-box-shadow: 0 0 5px rgba(255, 45, 70, 3); -moz-box-shadow: 0 0 5px rgba(255, 45, 70, 3);}
+    50% {background:#db5411;box-shadow: 0 0 5px rgba(219, 84, 17, 3);-webkit-box-shadow: 0 0 5px rgba(219, 84, 17, 3); -moz-box-shadow: 0 0 5px rgba(219, 84, 17, 3);}
+    100% {background:#db8d11;box-shadow: 0 0 5px rgba(251, 237, 9, 2);-webkit-box-shadow: 0 0 5px rgba(251, 237, 9, 2); -moz-box-shadow: 0 0 5px rgba(251, 237, 9, 2);}
+}
+
+/*微信分享页*/
+.weixin{background: #efefef;}
+.wechat{font-size:12px;}
+.wechat_title{background:url('../images/v2/pro_title.png') no-repeat;background-size:contain;width:320px;height:60px;box-shadow: 1px 1px 3px #d4d4d4;}
+.wechat_logo{background: url('../images/v2/pro_logo.png') no-repeat;background-size:contain;width:218px;height:48px;margin-left:25px;margin-top:6px;}
+.wechat_down{background: url('../images/v2/pro_download.png') no-repeat;background-size:contain;width:46px;height:46px;margin-top:7px;border:0px;margin-left:2px;}
+.wechatcolor{font-size:16px;color:#ff0b0b;}
+.wechatdis{font-size:12px;width:300px;line-height: 16px;word-break: break-all;text-align: left!important;}
+.wechatdis img{max-width:100%;}
+.weixin .reg_btn,.wei .reg_btn {width:120px;height:30px;border-radius: 30px;background: #fd665a;color:white;background-image:url("../images/v2/pro_icon_download.png");background-size: auto 14px;background-position:21px center;background-repeat: no-repeat;border:0px;text-indent: 21px}
+.we_sharedown{width:100%; font-size:13px;}
+.we_sharedown .eat{background: white;padding:7px 11px;}
+.we_sharedown .eat img{border-radius:4px;}
+.sharedis{color:#999;line-height: 15px;word-break: break-all;}
+.wedetail{background: #ffffff;padding:7px 0px;font-size:12px;}
+.mg_t5{margin-top:5px;}
+.wechat_share_btn{background: #fd665a;line-height: 35px;width:100%;border-top:1px solid #e4492f;border-bottom:1px solid #e4492f;}
+.wechat_seller{width:80%;text-align: left;line-height:1.5;}
+.wechat_seller img{max-width:100%;}
+#msg_tip{
+    background:rgba(0,0,0,.8);
+    max-width:90%;
+    width:12em;
+    height:30px;
+    line-height:30px;
+    font-size:12px;
+    color:#fff;
+    border-radius:5px;
+    text-align:center;
+    margin: auto;
+    position: absolute;
+    z-index:100;
+    top: 0; left: 0; bottom: 0; right: 0;
+    display:none;
+}

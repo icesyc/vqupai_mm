@@ -1,0 +1,64 @@
+html,body{padding:0px;margin:auto;font-size: 13px;background-color: #f2f2f2}
+.contain{max-width: 100%;min-width: 320px;margin: auto;}
+.img_one {
+    background: url('../images/act_iphone/1.jpg');
+    background-size: contain;
+    width: 320px;
+    height: 210px;
+    margin: auto;
+    cursor: pointer;
+    position: relative;
+}
+.img_two {
+    background:  #f2f2f2 url('../images/act_iphone/2.png');
+    background-size: contain;
+    width: 320px;
+    height: 210px;
+    margin: auto;
+    cursor: pointer;
+    position: relative;
+}
+.img_four {
+    background:  #f2f2f2 url('../images/act_iphone/4.png');
+    background-size: contain;
+    width: 320px;
+    height: 150px;
+    margin: auto;
+    cursor: pointer;
+    position: relative;
+
+}
+.input{
+    position: absolute;
+    top: 103px;
+    left: 57px;
+    border: 0px;
+    height: 30px;
+    width: 203px;
+    border-radius: 5px;
+    padding-left:5px;
+}
+.join{
+    position: absolute;
+    top: 163px;
+    left: 21px;
+    border: 0px;
+    height: 33px;
+    width: 92px;
+    border-radius: 5px;
+    padding-left:5px;
+}
+.err_msg
+{
+    background-color: #f2f2f2;
+    color: #ff6600;
+    text-align: center;
+    width: 320px;
+    height: 40px;
+    margin:auto;
+}
+.btn{border:0px;border-radius:5px;position: absolute;top:145px;left:160px;font-size:11px;width:102px;height:30px;}
+.algin_center{text-align: center;}
+.intro_text{background-color: #f2f2f2;text-align: left;padding:3px 10px;width:300px;margin:auto;}
+.intro_text ul {list-style-type: none;padding:0px;margin:0px;}
+.intro_text ul li{word-break: break-all;word-spacing: normal;line-height: 24px;padding-top:8px;color:#666;}

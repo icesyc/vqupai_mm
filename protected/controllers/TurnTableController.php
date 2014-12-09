@@ -12,8 +12,8 @@ class TurnTableController extends Controller
 
    //ajax主方法
    public function actionMain(){
-    //$this->uid = $this->initUser($_GET['token']);
-    $this->uid=100001;
+    $this->uid = $this->initUser($_GET['token']);
+    //$this->uid=100001;
     if(!$this->uid){
       $data['err'] = 1;
        echo json_encode($data); 
@@ -48,8 +48,8 @@ class TurnTableController extends Controller
 
  //算法
   private function doLottery() {
-   // $this->uid=$this->initUser($_GET['token']);
-    $this->uid=100001;
+    $this->uid=$this->initUser($_GET['token']);
+    //$this->uid=100001;
     $defaultAwardId=0;
     $defaultReturnId=0;
 

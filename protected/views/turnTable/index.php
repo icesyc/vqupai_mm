@@ -7,14 +7,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <title>微趣拍-转盘抽奖</title>
 <style type="text/css">
-.container{width:320px;margin:50px auto;position:relative;}
+.container{width: 320px; height:300px; position: absolute; margin: -150px 0px 0px -150px;left: 50%; top: 50%;}
 #Turntable{width:300px; height:300px; background:url(images_table/ly-plate.png) no-repeat;background-size: contain;}
-#btn{position:absolute; top: 30px; left: 0px;bottom: 0px;right: 19px; width: 120px;width:120px;margin:auto;}
+#btn{position:absolute; top: 75px; left: 10px;bottom: 0px;right: 0px; width: 120px;width:120px;margin:auto;}
 #btn img{cursor:pointer}
 </style>
-<script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>assets/Turntable/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>assets/Turntable/jQueryRotate.2.2.js"></script>
-<script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>assets/Turntable/jquery.easing.min.js"></script>
+<script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>js/jQueryRotate.2.2.js"></script>
+<script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>js/jquery.easing.min.js"></script>
 <script type="text/javascript">
 var token = "<?php echo $token ?>";
 
@@ -38,49 +38,31 @@ $(function(){
                 }
                 //随机赋值
                 if(data.award_id==1){
-                    turntable(1,200,'恭喜您抽中双倍卡');
+                    turntable(1,315,'恭喜您抽中双倍卡');
                 }
                 if(data.award_id==2){
-                    turntable(2,110,'恭喜您抽中延迟卡');
+                    turntable(2,45,'恭喜您抽中延迟卡');
                 }
                 if(data.award_id==3){
-                    turntable(3,22,'恭喜您抽中5元拍券');
+                    turntable(3,90,'恭喜您抽中5元拍券');
                 }
                 if(data.award_id==4){
-                    turntable(4,67,'恭喜您抽中30积分');
+                    turntable(4,135,'恭喜您抽中30积分');
                 }
                 if(data.award_id==5){
-                    turntable(5,155,'恭喜您抽中10积分');
+                    turntable(5,180,'恭喜您抽中10积分');
                 }
                 if(data.award_id==6){
-                    turntable(6,245,'恭喜您抽中5积分');
+                    turntable(6,225,'恭喜您抽中5积分');
                 }
                 if(data.award_id==7){
-                    turntable(7,-20,'恭喜您抽中1积分');
+                    turntable(7,270,'恭喜您抽中1积分');
                 }
                 if(data.award_id==8 || data.award_id==0){
-                   turntable(8,295,'很遗憾，这次您未抽中奖');
+                   turntable(8,360,'很遗憾，这次您未抽中奖');
                 }
             }
         });
-//
-       //  var data = [1,2,3,4];
-       //  data = data[Math.floor(Math.random()*data.length)];
-       // // alert(data);
-       //  if(data==1){
-       //      turntable(1,200,'恭喜您抽中的一等奖');
-       //  }
-       //  if(data==2){
-       //      turntable(2,110,'恭喜您抽中的二等奖');
-       //  }
-       //  if(data==3){
-       //      turntable(3,-20,'恭喜您抽中的三等奖');
-       //  }
-       //  if(data==4){
-       //      var angle = [22,67,155,245,295];
-       //      angle = angle[Math.floor(Math.random()*angle.length)]
-       //      turntable(0,angle,'很遗憾，这次您未抽中奖')
-       //  }
 
     })
     var turntable=function(id,num,text){
@@ -102,7 +84,7 @@ $(function(){
 <body>
 <div class="container">
     <div id="Turntable"></div>
-    <div id="btn"><img src="images_table/start.png" id="startbtn" width="120" /></div>
+    <div id="btn"><img src="images_table/start.png" id="startbtn" width="90" /></div>
 </div>
 </body>
 </html>

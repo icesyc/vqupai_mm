@@ -104,6 +104,12 @@ function ajaxHelp(){
   });
 }
 
+function reportSecondShare(){
+  var url="/ver/i.gif?report=js&c=SecondShare&<?php echo http_build_query($loger)?>";
+  var img = new Image;
+  img.src = url + '&_=' + Math.random();
+}
+
 WeixinApi.ready(function(Api){
   var wxData={
     imgUrl:"http://www.vqupai.com/<?php echo $item['pic_cover'];?>",
@@ -111,6 +117,13 @@ WeixinApi.ready(function(Api){
     desc:"人多力量大！各位亲朋好友，快来帮我把它杀到<?php echo $auction['reserve_price'];?>元吧！（猛戳这里）",
     title:"微趣拍血战到底，大家一起来杀价！"
   };
+
+  var wxCallbacks={
+    confirm:function(resp){
+      reportSecondShare();
+    },
+  };
+
   Api.shareToFriend(wxData, wxCallbacks);
   Api.shareToTimeline(wxData, wxCallbacks);
 

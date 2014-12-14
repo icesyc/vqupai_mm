@@ -89,16 +89,16 @@ class UserScore extends CActiveRecord
 	 *
 	 * @param int $uid 用户id
 	 * @param int $action 加积分的动作
-	 * @param boolean $silence 是否抛异常
+	 * @param int $score 要增加的积分
 	 * @return 实际增加的积分
 	 */
-	public static function add($uid, $action, $silence=true){
+	public static function add($uid, $action, $score=0){
 		if(!isset(self::$score[$action])){
 			throw new Exception('invalid action');
 		}
 		$trans = Yii::app()->db->beginTransaction();
 		try{
-			$addScore = self::$score[$action];
+			$addScore = $score > 0 ? $score : self::$score[$action];
 			//购买,创建拍卖,注册不受积分限制
 			if(self::isLimit($action)){
 				$totalScore = self::getDayScore($uid);
@@ -123,8 +123,7 @@ class UserScore extends CActiveRecord
 
 		}catch(Exception $e){
 			$trans->rollback();
-			if($silence) return false;
-			throw $e instanceof CDbException ? new Exception('积分添加失败') : $e;
+			return false;
 		}
 	}
 

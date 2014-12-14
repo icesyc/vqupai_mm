@@ -1,26 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "coupon".
+ * This is the model class for table "act_hlj".
  *
- * The followings are the available columns in table 'coupon':
+ * The followings are the available columns in table 'act_hlj':
  * @property string $id
- * @property string $name
- * @property string $pic_url
- * @property string $description
- * @property string $value
- * @property integer $is_bind
- * @property integer $disabled
- * @property string $expire_time
+ * @property string $code
+ * @property string $phone
+ * @property string $times
+ * @property string $ctime
  */
-class Coupon extends CActiveRecord
+class ActHlj extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'coupon';
+		return 'act_hlj';
 	}
 
 	/**
@@ -31,15 +28,12 @@ class Coupon extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, pic_url, description', 'required'),
-			array('is_bind, disabled', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>32),
-			array('pic_url', 'length', 'max'=>128),
-			array('description', 'length', 'max'=>256),
-			array('value, expire_time', 'length', 'max'=>10),
+			array('code', 'length', 'max'=>20),
+			array('phone, ctime', 'length', 'max'=>11),
+			array('times', 'length', 'max'=>2),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, pic_url, description, value, is_bind, disabled, expire_time', 'safe', 'on'=>'search'),
+			array('id, code, phone, times, ctime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,14 +54,11 @@ class Coupon extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '自增id',
-			'name' => '拍券名称',
-			'pic_url' => '拍券的图片url',
-			'description' => '拍券的描述',
-			'value' => '拍券的金额',
-			'is_bind' => '是否绑定',
-			'disabled' => '是否被禁用 0 未禁用 1 已禁用',
-			'expire_time' => '过期时间',
+			'id' => 'id',
+			'code' => '验证码',
+			'phone' => '电话',
+			'times' => '短信发送次数',
+			'ctime' => '时间',
 		);
 	}
 
@@ -90,39 +81,21 @@ class Coupon extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('pic_url',$this->pic_url,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('value',$this->value,true);
-		$criteria->compare('is_bind',$this->is_bind);
-		$criteria->compare('disabled',$this->disabled);
-		$criteria->compare('expire_time',$this->expire_time,true);
+		$criteria->compare('code',$this->code,true);
+		$criteria->compare('phone',$this->phone,true);
+		$criteria->compare('times',$this->times,true);
+		$criteria->compare('ctime',$this->ctime,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
-	}
-	
-	public function getExpireTime($from=null){
-		!$from && $from = time();
-		return $this->expire_time > 0 ? $from + $this->expire_time * 86400 : 0;
-	}
-
-	public function getAllText()
-	{
-		$rows = self::model()->findAll();
-		$ret = array();
-		foreach($rows as $row){
-			$ret[$row->id] = $row->name;
-		}
-		return $ret;
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Coupon the static model class
+	 * @return ActHlj the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

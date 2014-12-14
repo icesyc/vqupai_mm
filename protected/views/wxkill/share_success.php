@@ -82,6 +82,12 @@ var url="/ver/i.gif?report=js&c=ua&<?php echo http_build_query($loger)?>";
 var img = new Image;
 img.src = url + '&_=' + Math.random();
 
+function reportSecondShare(){
+  var url="/ver/i.gif?report=js&c=SecondShare&<?php echo http_build_query($loger)?>";
+  var img = new Image;
+  img.src = url + '&_=' + Math.random();
+}
+
 WeixinApi.ready(function(Api){
   var wxData={
     imgUrl:"http://www.vqupai.com/<?php echo $item['pic_cover'];?>",
@@ -90,25 +96,10 @@ WeixinApi.ready(function(Api){
     title:"微趣拍血战到底，大家一起来杀价！"
   };
 
-  
-
   var wxCallbacks={
-    ready:function(){
-      ;
-    },
-    cancel:function(resp){
-      ;
-    },
-    fail:function(resp){
-      ;
-      
-    },
     confirm:function(resp){
-      ;
+      reportSecondShare();
     },
-    all:function(resp){
-      ;
-    }
   };
 
   Api.shareToFriend(wxData, wxCallbacks);

@@ -1,26 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "coupon".
+ * This is the model class for table "turn_table".
  *
- * The followings are the available columns in table 'coupon':
- * @property string $id
- * @property string $name
- * @property string $pic_url
- * @property string $description
- * @property string $value
- * @property integer $is_bind
- * @property integer $disabled
- * @property string $expire_time
+ * The followings are the available columns in table 'turn_table':
+ * @property integer $id
+ * @property integer $award_id
+ * @property string $award_name
+ * @property integer $stock_num
+ * @property integer $probability
+ * @property integer $status
+ * @property integer $num
  */
-class Coupon extends CActiveRecord
+class TurnTable extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'coupon';
+		return 'turn_table';
 	}
 
 	/**
@@ -31,15 +30,12 @@ class Coupon extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, pic_url, description', 'required'),
-			array('is_bind, disabled', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>32),
-			array('pic_url', 'length', 'max'=>128),
-			array('description', 'length', 'max'=>256),
-			array('value, expire_time', 'length', 'max'=>10),
+			array('id, award_id, award_name, stock_num, probability, status, num', 'required'),
+			array('id, award_id, stock_num, probability, status, num', 'numerical', 'integerOnly'=>true),
+			array('award_name', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, pic_url, description, value, is_bind, disabled, expire_time', 'safe', 'on'=>'search'),
+			array('id, award_id, award_name, stock_num, probability, status, num', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,14 +56,13 @@ class Coupon extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '自增id',
-			'name' => '拍券名称',
-			'pic_url' => '拍券的图片url',
-			'description' => '拍券的描述',
-			'value' => '拍券的金额',
-			'is_bind' => '是否绑定',
-			'disabled' => '是否被禁用 0 未禁用 1 已禁用',
-			'expire_time' => '过期时间',
+			'id' => 'ID',
+			'award_id' => 'Award',
+			'award_name' => 'Award Name',
+			'stock_num' => 'Stock Num',
+			'probability' => 'Probability',
+			'status' => 'Status',
+			'num' => 'Num',
 		);
 	}
 
@@ -89,40 +84,24 @@ class Coupon extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('pic_url',$this->pic_url,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('value',$this->value,true);
-		$criteria->compare('is_bind',$this->is_bind);
-		$criteria->compare('disabled',$this->disabled);
-		$criteria->compare('expire_time',$this->expire_time,true);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('award_id',$this->award_id);
+		$criteria->compare('award_name',$this->award_name,true);
+		$criteria->compare('stock_num',$this->stock_num);
+		$criteria->compare('probability',$this->probability);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('num',$this->num);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
-	}
-	
-	public function getExpireTime($from=null){
-		!$from && $from = time();
-		return $this->expire_time > 0 ? $from + $this->expire_time * 86400 : 0;
-	}
-
-	public function getAllText()
-	{
-		$rows = self::model()->findAll();
-		$ret = array();
-		foreach($rows as $row){
-			$ret[$row->id] = $row->name;
-		}
-		return $ret;
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Coupon the static model class
+	 * @return TurnTable the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

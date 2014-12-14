@@ -37,6 +37,16 @@ class Prop extends CActiveRecord
 		);
 	}
 
+	public function getAllText()
+	{
+		$rows = self::model()->findAll();
+		$ret = array();
+		foreach($rows as $row){
+			$ret[$row->id] = $row->name;
+		}
+		return $ret;
+	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

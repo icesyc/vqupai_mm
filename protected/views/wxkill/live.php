@@ -122,6 +122,31 @@ WeixinApi.ready(function(Api){
 var stat = "<?php echo http_build_query($stat);?>";
 var img = new Image;
 img.src = 'http://www.vqupai.com/ver/i.gif?' + stat + '&_=' + Math.random();
+
+function reportWapShare(){
+  var url="/ver/i.gif?report=js&c=WapShare&<?php echo http_build_query($stat)?>";
+  var img = new Image;
+  img.src = url + '&_=' + Math.random();
+}
+
+WeixinApi.ready(function(Api){
+  var wxData={
+    imgUrl:"http://www.vqupai.com/<?php echo $auction['item']['pic_cover'];?>",
+    link:"http://www.vqupai.com/mm/index.php?r=userAuction&id=<?php echo $auction['id'];?>&wap_share=1",
+    desc:"人多力量大！各位亲朋好友，快来帮我把它杀到<?php echo $auction['reserve_price'];?>元吧！（猛戳这里）",
+    title:"微趣拍血战到底，大家一起来杀价！"
+  };
+
+  var wxCallbacks={
+    confirm:function(resp){
+      reportWapShare();
+    },
+  };
+
+  Api.shareToFriend(wxData, wxCallbacks);
+  Api.shareToTimeline(wxData, wxCallbacks);
+
+});
 </script>
 </div>
 <div class="dialog2">

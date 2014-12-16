@@ -48,20 +48,60 @@ class SignInfo extends CActiveRecord
 		return array(
 		);
 	}
-
+	  public function getSignInfoMonth($month)
+		{
+			$signs = self::model()->findAllByAttributes(array('month' => $month));
+			if($signs){
+				$info = array();
+				foreach($signs as $r){
+					$info[] = array(
+						'exp'=>$r->exp,
+						'score'=>$r->score,
+						'coupon'=>$r->coupon,
+						'prop'=>$r->prop,
+						'day'=>$r->day,
+						'id'=>$r->id,
+						);
+				}
+				return $info;
+			}
+			else{
+				return false;
+			}
+		}
+       public function getSignInfoMonthDay($month)
+		{
+			$sign1 = self::model()->findAllByAttributes(array('month' => $month));
+			if($sign1){
+				$info1 = array();
+				foreach($sign1 as $r){
+					$info1[] = array(
+						'exp'=>$r->exp,
+						'score'=>$r->score,
+						'coupon'=>$r->coupon,
+						'prop'=>$r->prop,
+						'day'=>$r->day,
+						);
+				}
+				return $info1;
+			}
+			else{
+				return false;
+			}
+		}
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'id',
-			'month' => '月份',
-			'day' => '日',
-			'exp' => '经验值',
-			'score' => '积分',
-			'coupon' => '拍券',
-			'prop' => '道具',
+			'id' => 'ID',
+			'month' => 'Month',
+			'day' => 'Day',
+			'exp' => 'Exp',
+			'score' => 'Score',
+			'coupon' => 'Coupon',
+			'prop' => 'Prop',
 		);
 	}
 
@@ -94,26 +134,6 @@ class SignInfo extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
-	}
-
-	public function getSignInfoMonth($month)
-	{
-		$signs = self::model()->findAllByAttributes(array('month' => $month));
-		if($signs){
-			$info = array();
-			foreach($signs as $r){
-				$info[] = array(
-					'exp'=>$r->exp,
-					'score'=>$r->score,
-					'coupon'=>$r->coupon,
-					'prop'=>$r->prop,
-					);
-			}
-			return $info;
-		}
-		else{
-			return false;
-		}
 	}
 
 	/**

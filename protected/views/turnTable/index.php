@@ -7,28 +7,27 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <title>微趣拍-转盘抽奖</title>
 <style type="text/css">
-.container{width: 320px; height:300px; position: absolute; margin: -150px 0px 0px -150px;left: 50%; top: 50%;}
-#Turntable{width:300px; height:300px; background:url(images_table/ly-plate.png) no-repeat;background-size: contain;}
-#btn{position:absolute; top: 75px; left: 10px;bottom: 0px;right: 0px; width: 120px;width:120px;margin:auto;}
-#btn img{cursor:pointer}
+.container{width: 300px; height:300px;border:1px solid transparent;position: relative;margin:10px auto;}
+#Turntable{border-radius: 200px;width:300px; height:300px; background:url(images_table/ly-plate.png) no-repeat;background-size: contain;}
+#btn{border:0px;position:absolute; top: 80px; left: 40px;bottom: 0px;right: 0px; width:120px;margin:auto;background:url('images_table/start.png') no-repeat;background-size: auto 110px;}
+
 </style>
-<script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>js/jQueryRotate.2.2.js"></script>
-<script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>js/jquery.easing.min.js"></script>
 <script type="text/javascript">
 var token = "<?php echo $token ?>";
 
 $(function(){
+  var score;
 
-
-    $("#startbtn").click(function(){
+    $("#btn").click(function(){
+        //避免重复发请求扣积分
+        $('#btn').attr('disabled',true);
         $.ajax({
             type: "POST",
             cache: false,
             //url:'<?php echo $this->createUrl('test');?>',
             url: 'index.php?r=turntable/main&token=' + token,
             dataType: "json",
-            success: function(data) {            
+            success: function(data) {       
                 if(data.err==1){
                   return top.postMessage('login','*');
                 }
@@ -37,6 +36,8 @@ $(function(){
                   return false;
                 }
                 //随机赋值
+                //实时更新积分
+                score=data.user_score;
                 if(data.award_id==1){
                     turntable(1,315,'恭喜您抽中双倍卡');
                 }
@@ -61,8 +62,11 @@ $(function(){
                 if(data.award_id==8 || data.award_id==0){
                    turntable(8,360,'很遗憾，这次您未抽中奖');
                 }
+              
             }
+
         });
+        
 
     })
     var turntable=function(id,num,text){
@@ -73,7 +77,9 @@ $(function(){
             animateTo:1440+num,
             easing: $.easing.easeOutSine,
             callback: function(){
-                alert(text);
+             $('label.score').html("").html(score);   
+             alert(text);                
+             $('#btn').attr('disabled',false);
             }
         });
     }
@@ -84,7 +90,8 @@ $(function(){
 <body>
 <div class="container">
     <div id="Turntable"></div>
-    <div id="btn"><img src="images_table/start.png" id="startbtn" width="90" /></div>
+    <input type="button" id="btn" />
+<!--     <div id="btn"><img src="images_table/start.png" id="startbtn" width="90" /></div> -->
 </div>
 </body>
 </html>

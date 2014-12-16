@@ -191,7 +191,6 @@ class TurnTableController extends Controller
   }
 
 
-
   //初始化用户信息,如果成功就返回用户id
   public function initUser($token=''){
     Yii::app()->setComponents(array(

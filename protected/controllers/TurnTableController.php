@@ -263,10 +263,5 @@ class TurnTableController extends Controller
     }
   }
 
-//发放奖品记录
-  public function recordCount(){
 
-    $turn_user=TurnTableUser::model().findByPk($turn_table_id);
-
-  }
 }

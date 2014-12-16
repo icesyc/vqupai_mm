@@ -40,11 +40,11 @@
                              return false;
                             }
                             //个人显示信息更新
-                            //alert(data.aa);
+                            alert(data.days);
                             $('.sign_data label.exp').html('').html(data.user_exp);
                             $('.sign_data label.score').html("").html(data.user_score);  
                             $('.sign_list ul li').eq(index).find('img').show();
-                            //$('.sign_data label.qiandao').html('').html(data.aa);
+                            $('.sign_data label.qiandao').html('').html(data.days);
                         },
                         error:function(error){ 
                          alert('服务器堵了，请稍后重试'); 

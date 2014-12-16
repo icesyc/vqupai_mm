@@ -30,18 +30,20 @@ class SignInfoController extends Controller
          }else{
            //具体操作
            $this->addEdit();
-           //$aa=usersign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
          }
         //p($is_count->sign_day);die;
 	   $user=User::model()->findByPk($this->uid);
-
+       $days=UserSign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
+       //p($days['sign_day']);die;
 	     $data=array(
              'user_score'=>$user->score,
              'user_exp'=>$user->exp,
              'err'=>$this->err,
-             //'aa'=>$aa->sign_day,
+             'days'=>$days['sign_day'],
             ); 
-    
+	         
+ 
+
     echo json_encode($data);
 		
 
@@ -129,9 +131,9 @@ class SignInfoController extends Controller
 	    }
 	     //签到记录
 	     
-	     $ex=usersign::model()->find('uid=:uid and month=:month and cdate=:cdate',array('uid'=>$this->uid,':month'=>$month,':cdate'=>$cdate));
-	      if(!$ex){
-	         $user_sign=new usersign;
+	     $list_sign=UserSign::model()->find('uid=:uid and month=:month and cdate=:cdate',array('uid'=>$this->uid,':month'=>$month,':cdate'=>$cdate));
+	      if(!$list_sign){
+	         $user_sign=new UserSign;
 			 $user_sign->uid=$this->uid;		 
 			 $user_sign->month=$month;
 		     $user_sign->cdate = $cdate;
@@ -142,13 +144,15 @@ class SignInfoController extends Controller
 			    echo "添加失败";  
 			 }  
 	        
-	         $model=usersign::model()->findAll();
+	         $model=UserSign::model()->findAll();
 	        // p($model);die;
 	      }else{
-	           $ex->sign_day+=1;
-	           $ex->cdate = $cdate;
-	           $ex->update(array('sign_day'));
+	           $list_sign->sign_day+=1;
+	           $list_sign->cdate = $cdate;
+	           $list_sign->update(array('sign_day'));
+	           $list_sign->update(array('cdate'));
 	      }
+	      
   }
  //初始化用户信息,如果成功就返回用户id
   public function initUser($token=''){

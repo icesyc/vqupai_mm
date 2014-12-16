@@ -5,9 +5,43 @@ class TurnTableController extends Controller
   private $uid = 0;
 	public function actionIndex()
 	{
+   //$this->uid=100001;
+    //如果已经登陆，拉取数据
+    //月份
+    $month = date('Ym', time());
+    //var_dump($month);
+    
+  
+
+  
+
     $token = $this->getString('token');
-    $data['token'] = $token;
-		$this->render('index', $data);
+    //user信息
+    $user=User::model()->findByPk($this->uid);
+    $usersign=userSign::model()->findByPk($this->uid);
+    $coupon_text = Coupon::model()->findAll();
+    $prop_text = Prop::model()->findAll();
+    $sign_info = signInfo::model()->getSignInfoMonth($month);
+    $cdate = date('Ymd', time());
+    $ex=usersign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
+
+    if(!$usersign){
+      $usersign=0;
+    }
+    if(!$ex){
+      $days=0;
+    }else{
+      $days=$ex->sign_day;
+    }
+   // p($ex);die;
+    $data=array(
+      'token'=>$token,
+      'user'=>$user,
+      'usersign'=>$usersign,
+      'sign_info'=>$sign_info,
+      'days'=>$days,
+    );
+		$this->render('main', $data);
 	}
 
    //ajax主方法
@@ -20,11 +54,14 @@ class TurnTableController extends Controller
        exit;
     }
      $this->checkUserScore();
+    
      $random=$this->doLottery();
+     $user=User::model()->findByPk($this->uid);
      $data=array(
-             'award_id'=>$random
+             'award_id'=>$random,
+             'user_score'=>$user->score,
             ); 
-    // p($data);die;
+     //p($user->score);die;
     echo json_encode($data);
     
 
@@ -189,6 +226,7 @@ class TurnTableController extends Controller
    // echo $returnId;
     return $returnId;
   }
+
 
 
   //初始化用户信息,如果成功就返回用户id

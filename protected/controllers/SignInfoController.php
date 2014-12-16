@@ -20,7 +20,7 @@ class SignInfoController extends Controller
 	    }
 	     //控制一天只能签到一次
 	     $cdate = date('Ymd', time());
-	     $is_count=usersign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
+	     $is_count=UserSign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
 	     if($is_count){      
 	           $this->err=2;
 	     }
@@ -33,7 +33,7 @@ class SignInfoController extends Controller
            //$aa=usersign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
          }
         //p($is_count->sign_day);die;
-	   $user=user::model()->findByPk($this->uid);
+	   $user=User::model()->findByPk($this->uid);
 
 	     $data=array(
              'user_score'=>$user->score,
@@ -53,18 +53,18 @@ class SignInfoController extends Controller
 	    $day=Yii::app()->request->getParam('day');
 	   //查询当月当天的奖品
 	    $list=SignInfo::model()->find('month=:month and day >:day',array(':month'=>$month,':day'=>$day));
-        $user=user::model()->findByPk($this->uid);
+        $user=User::model()->findByPk($this->uid);
         //P($list);die;
 	    //积分操作
 	    //p($list->score);die;
 	    if($list->score!=0){
-	    	  $user=user::model()->findByPk($this->uid);
+	    	  $user=User::model()->findByPk($this->uid);
 		      $user->score+=$list->score;
 		      $user->update(array('score'));
 	    }
         //经验值操作
         if($list->exp!=0){
-	    	  $user=user::model()->findByPk($this->uid);
+	    	  $user=User::model()->findByPk($this->uid);
 		      $user->exp+=$list->exp;
 		      $user->update(array('exp'));
 	    }

@@ -18,12 +18,12 @@ class TurnTableController extends Controller
     $token = $this->getString('token');
     //user信息
     $user=User::model()->findByPk($this->uid);
-    $usersign=userSign::model()->findByPk($this->uid);
+    $usersign=UserSign::model()->findByPk($this->uid);
     $coupon_text = Coupon::model()->findAll();
     $prop_text = Prop::model()->findAll();
-    $sign_info = signInfo::model()->getSignInfoMonth($month);
+    $sign_info = SignInfo::model()->getSignInfoMonth($month);
     $cdate = date('Ymd', time());
-    $ex=usersign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
+    $ex=UserSign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
 
     if(!$usersign){
       $usersign=0;
@@ -74,7 +74,7 @@ class TurnTableController extends Controller
       $user = User::model()->findByPk($this->uid);
       if(!$user) return;
       $ctime=strtotime("today midnight");
-      $is_count=turntableuser::model()->find('uid=:uid and ctime >:ctime',array(':uid'=>$this->uid,':ctime'=>$ctime));
+      $is_count=TurnTableUser::model()->find('uid=:uid and ctime >:ctime',array(':uid'=>$this->uid,':ctime'=>$ctime));
       if($is_count && $user->score < 10){      
            $data['err'] = 2;
            $this->renderJSON($data);
@@ -86,7 +86,7 @@ class TurnTableController extends Controller
  //算法
   private function doLottery() {
     $this->uid=$this->initUser($_GET['token']);
-    //$this->uid=100001;
+   // $this->uid=100001;
     $defaultAwardId=0;
     $defaultReturnId=0;
 
@@ -98,7 +98,7 @@ class TurnTableController extends Controller
     $cri->addCondition('stock_num > 0');
     $cri->addCondition('status > 0');
     $cri->order="probability";
-    $stockAll=turntable::model()->findAll($cri);
+    $stockAll=TurnTable::model()->findAll($cri);
     if (empty($stockAll)) {
       $awardId=$defaultAwardId;
       $returnId=$defaultReturnId;
@@ -141,12 +141,12 @@ class TurnTableController extends Controller
 
      // p($returnId);die;
     //扣库存
-    $turn_table = turntable::model()->find('id=:id',array(':id'=>$returnId));
+    $turn_table = TurnTable::model()->find('id=:id',array(':id'=>$returnId));
     $turn_table->stock_num--;
     $turn_table->update();
-    $score=user::model()->findByPk($this->uid);
+    $score=User::model()->findByPk($this->uid);
     $ctime=strtotime("today midnight");
-    $is_count=turntableuser::model()->find('uid=:uid and ctime >:ctime',array(':uid'=>$this->uid,':ctime'=>$ctime));
+    $is_count=TurnTableUser::model()->find('uid=:uid and ctime >:ctime',array(':uid'=>$this->uid,':ctime'=>$ctime));
   
     //扣积分
     if($is_count){
@@ -156,7 +156,7 @@ class TurnTableController extends Controller
     
     //增加积分
     if($turn_table->id<=7 && $turn_table->id>=4){
-      $score=user::model()->findByPk($this->uid);
+      $score=User::model()->findByPk($this->uid);
       $score->score+=$turn_table->award_name;
       $score->update(array('score'));
     }
@@ -213,7 +213,7 @@ class TurnTableController extends Controller
      
     }
   //奖品记录
-    $turn_user=new turntableuser;
+    $turn_user=new TurnTableUser;
     $turn_user->uid=$this->uid;
     $turn_user->turn_table_id=$turn_table->id;
     $turn_user->ctime = time();
@@ -266,7 +266,7 @@ class TurnTableController extends Controller
 //发放奖品记录
   public function recordCount(){
 
-    $turn_user=turntableuser::model().findByPk($turn_table_id);
+    $turn_user=TurnTableUser::model().findByPk($turn_table_id);
 
   }
 }

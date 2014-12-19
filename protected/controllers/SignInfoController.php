@@ -12,7 +12,7 @@ class SignInfoController extends Controller
   public function actionMain(){
   	  $token = $this->getString('token');
       $this->uid = $this->initUser($token);
-	    //$this->uid=100001;
+	  // $this->uid=100001;
 	    //未登录返回
 	    if(!$this->uid){
 	      $this->err = 1;
@@ -20,8 +20,9 @@ class SignInfoController extends Controller
 	       exit;
 	    }
 	     //控制一天只能签到一次
+	     $month = date('Ym', time()); 
 	     $cdate = date('Ymd', time());
-	     $is_count=UserSign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
+	     $is_count=UserSign::model()->find('uid=:uid and month=:month and cdate=:cdate',array(':uid'=>$this->uid,'month'=>$month,':cdate'=>$cdate));
 	     if($is_count){      
 	           $this->err=2;
 	     }
@@ -33,6 +34,7 @@ class SignInfoController extends Controller
            $this->addEdit();
          }
         //p($is_count->sign_day);die;
+
 	   $user=User::model()->findByPk($this->uid);
        $days=UserSign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
        //p($days['sign_day']);die;
@@ -55,7 +57,7 @@ class SignInfoController extends Controller
 	    $sign_info = SignInfo::model()->getSignInfoMonth($month);
 	    $day=Yii::app()->request->getParam('day');
 	   //查询当月当天的奖品
-	    $list=SignInfo::model()->find('month=:month and day >:day',array(':month'=>$month,':day'=>$day));
+	    $list=SignInfo::model()->find('month=:month and day=:day',array(':month'=>$month,':day'=>$day));
         $user=User::model()->findByPk($this->uid);
         //P($list);die;
 	    //积分操作

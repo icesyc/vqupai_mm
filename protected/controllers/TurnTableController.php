@@ -5,7 +5,7 @@ class TurnTableController extends Controller
   private $uid = 0;
 	public function actionIndex()
 	{
-    //$this->uid=100001;
+   // $this->uid=100001;
      
     //如果已经登陆，拉取数据
     //月份

@@ -27,7 +27,7 @@
                         //url:'<?php echo $this->createUrl('test');?>',
                         url: 'index.php?r=signInfo/main&token=' + token,
                        
-                        data:{"day":index},
+                        data:{"day":index+1},
                         dataType: "json",
 
                         success: function(data) {      

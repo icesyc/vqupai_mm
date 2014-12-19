@@ -12,7 +12,7 @@ class SignInfoController extends Controller
   public function actionMain(){
   	  $token = $this->getString('token');
       $this->uid = $this->initUser($token);
-	  //$this->uid=100001;
+	    //$this->uid=100001;
 	    //未登录返回
 	    if(!$this->uid){
 	      $this->err = 1;
@@ -144,7 +144,7 @@ class SignInfoController extends Controller
 	    }
 	     //签到记录
 	     
-	     $list_sign=UserSign::model()->find('uid=:uid and month=:month and cdate=:cdate',array('uid'=>$this->uid,':month'=>$month,':cdate'=>$cdate));
+	     $list_sign=UserSign::model()->find('uid=:uid and month=:month',array('uid'=>$this->uid,':month'=>$month));
 	      if(!$list_sign){
 	         $user_sign=new UserSign;
 			 $user_sign->uid=$this->uid;		 

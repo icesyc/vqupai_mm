@@ -10,8 +10,9 @@ class SignInfoController extends Controller
 		$this->render('/turntable/sign');
 	}
   public function actionMain(){
-  	   $this->uid = $this->initUser($_GET['token']);
-	   //$this->uid=100001;
+  	  $token = $this->getString('token');
+      $this->uid = $this->initUser($token);
+	  //$this->uid=100001;
 	    //未登录返回
 	    if(!$this->uid){
 	      $this->err = 1;
@@ -72,23 +73,35 @@ class SignInfoController extends Controller
 	    }
 	    //增加拍券操作
 	    if($list->coupon==1003){
-	    	  $couponId = 1003;
-		      $coupon = Coupon::model()->findByPk($couponId);
-		      $uc = new UserCoupon;
-		      $uc->uid = $this->uid;
-		      $uc->coupon_id = $coupon->id;
-		      $uc->expire_time = $coupon->getExpireTime();
+	    	  // $couponId = 1003;
+		      // $coupon = Coupon::model()->findByPk($couponId);
+		      // $uc = new UserCoupon;
+		      // $uc->uid = $this->uid;
+		      // $uc->coupon_id = $coupon->id;
+		      // $uc->expire_time = $coupon->getExpireTime();
 		      
-		      $is=UserCoupon::model()->find('coupon_id=:coupon_id and uid=:uid',array(':coupon_id'=>$couponId,'uid'=>$this->uid));
-		      if(!$is){
-		        $uc->num = 1;
-		         if(!$uc->insert()){
-		            return false;
-		         }  
-		      }else{
-		         $is->num+=1;
-		         $is->update(array('num'));
-		      }
+		      // $is=UserCoupon::model()->find('coupon_id=:coupon_id and uid=:uid',array(':coupon_id'=>$couponId,'uid'=>$this->uid));
+		      // if(!$is){
+		      //   $uc->num = 1;
+		      //    if(!$uc->insert()){
+		      //       return false;
+		      //    }  
+		      // }else{
+		      //    $is->num+=1;
+		      //    $is->update(array('num'));
+		      // }
+	    	   $couponId = 1003;
+		       $coupon = Coupon::model()->findByPk($couponId);
+		       $uc = new UserCoupon;
+		       $uc->uid = $this->uid;
+		       $uc->coupon_id = $coupon->id;
+		       $uc->expire_time = $coupon->getExpireTime();
+		       $uc->num = 1;
+		      if($uc->save()>0){  
+		    
+		       }else{  
+		          echo "添加失败";  
+		       }     
             // p($is);die;
 	    }
 	    //增加道具操作
@@ -139,7 +152,7 @@ class SignInfoController extends Controller
 		     $user_sign->cdate = $cdate;
 	         $user_sign->sign_day=1; 
 		     if($user_sign->save()>0){  
-			   return true; 
+			   
 			 }else{  
 			    echo "添加失败";  
 			 }  

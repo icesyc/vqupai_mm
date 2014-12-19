@@ -8,6 +8,7 @@
  * @property integer $uid
  * @property integer $ctime
  * @property integer $turn_table_id
+ * @property string $cdate
  */
 class TurnTableUser extends CActiveRecord
 {
@@ -27,11 +28,11 @@ class TurnTableUser extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, uid, ctime, turn_table_id', 'required'),
-			array('id, uid, ctime, turn_table_id', 'numerical', 'integerOnly'=>true),
+			array('uid, ctime, turn_table_id, cdate', 'required'),
+			array('uid, ctime, turn_table_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, uid, ctime, turn_table_id', 'safe', 'on'=>'search'),
+			array('id, uid, ctime, turn_table_id, cdate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,6 +57,7 @@ class TurnTableUser extends CActiveRecord
 			'uid' => 'Uid',
 			'ctime' => 'Ctime',
 			'turn_table_id' => 'Turn Table',
+			'cdate' => 'Cdate',
 		);
 	}
 
@@ -81,6 +83,7 @@ class TurnTableUser extends CActiveRecord
 		$criteria->compare('uid',$this->uid);
 		$criteria->compare('ctime',$this->ctime);
 		$criteria->compare('turn_table_id',$this->turn_table_id);
+		$criteria->compare('cdate',$this->cdate,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -21,12 +21,11 @@
                $(".sign_list span:contains(0)").parent().hide();
                $('.sign_list ul li').each(function(index,obj){
                  $(this).find('div.sign_content').click(function(){
-
                     $.ajax({
                         type: "POST",
                         cache: false,
                         //url:'<?php echo $this->createUrl('test');?>',
-                        url: 'index.php?r=signinfo/main&token=' + token,
+                        url: 'index.php?r=signInfo/main&token=' + token,
                        
                         data:{"day":index},
                         dataType: "json",
@@ -46,7 +45,7 @@
                             $('.sign_list ul li').eq(index).find('img').show();
                             $('.sign_data label.qiandao').html('').html(data.days);
                             //签完到放开下一天的按钮状态
-                            $('.sign_list ul li').eq(index).next('li').find('div.dialog').css('display','none');
+                            //$('.sign_list ul li').eq(index).next('li').find('div.dialog').css('display','none');
                         },
                         error:function(error){ 
                          alert('服务器堵了，请稍后重试'); 
@@ -96,12 +95,11 @@
                                  print "双倍卡";
                                }
                             ?>
-                            <?php echo $v1['prop']; ?>
 
                         </span>
                     </li>
                 <?php endforeach ?>
-                
+                <div style="clear:both"></div>
 
                 </ul>
             </div>

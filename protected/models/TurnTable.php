@@ -6,7 +6,6 @@
  * The followings are the available columns in table 'turn_table':
  * @property integer $id
  * @property string $award_name
- * @property integer $stock_num
  * @property integer $probability
  * @property integer $status
  * @property integer $num
@@ -29,12 +28,12 @@ class TurnTable extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, award_name, stock_num, probability, status, num', 'required'),
-			array('id, stock_num, probability, status, num', 'numerical', 'integerOnly'=>true),
+			array('id, award_name, probability, status, num', 'required'),
+			array('id, probability, status, num', 'numerical', 'integerOnly'=>true),
 			array('award_name', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, award_name, stock_num, probability, status, num', 'safe', 'on'=>'search'),
+			array('id, award_name, probability, status, num', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,7 +56,6 @@ class TurnTable extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'award_name' => 'Award Name',
-			'stock_num' => 'Stock Num',
 			'probability' => 'Probability',
 			'status' => 'Status',
 			'num' => 'Num',
@@ -84,7 +82,6 @@ class TurnTable extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('award_name',$this->award_name,true);
-		$criteria->compare('stock_num',$this->stock_num);
 		$criteria->compare('probability',$this->probability);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('num',$this->num);

@@ -19,14 +19,15 @@ body{background: #efefef;}
 .sign{width:100%;height:62px;background: white;}
 .sign .title{padding:5px 10px;}
 .sign .title .left_img{background-size: contain;width:50px;height:50px;float:left;}
+.sign .title .left_img img{border-radius: 25px;}
 .sign .title .left_img .grade{color:#ffed24;margin-top:-15px;text-align: center;text-shadow: 1px 0 1px #ea7462, 0 1px 1px #ea7462,0 -1px 1px #ea7462, -1px 0 1px #ea7462;}
 .sign .title .right_text{margin-left: 50px;}
 .sign_data{font-size:14px;margin-top:7px;}
 .sign_data span{padding-left:4px;}
 
 .sign_des{margin:10px 10px 5px; line-height: 18px;word-break: break-all;word-spacing: normal;}
-.sign_list{margin:0 10px 0px 5px;}
-.sign_list ul{list-style-type: none;margin:0px;padding:0px;}
+.sign_list{margin:0 10px 40px 5px;}
+.sign_list ul{list-style-type: none;margin:0px;padding:0px;padding-bottom: 50px;}
 .sign_list ul li{float:left;margin-left:5px; border-radius:5px;background: white;margin-top:5px;width:33%;position:relative;}
 .dialog{border-radius:5px;background:#999;opacity:0.6;filter:alpha(opacity=60);width:100%;height:100%;position: absolute;top: 0px;z-index: 99999999;display: none;}
 
@@ -84,24 +85,29 @@ body{background: #efefef;}
 .sign_list ul li img{background-size:contain;width:100%;height:100%;position:absolute; display: none;}
 .tab{margin:10px;border:1px solid #e76049;border-radius: 5px; color:#e76049;height:30px;background: white; }
 .tab ul{list-style: none;padding:0px;margin:0px;}
-.tab ul li{float:left;width:50%;height:35px;text-align: center;padding-top:10px;}
+.tab ul li{float:left;width:50%;height:19px;text-align: center;padding-top:10px;}
 .tab ul li.active{background:#e76049;color:white;height:20px;padding-top:10px;}
 .tab_content{width:100%;}
-
+.dialog1{background:#000000;opacity:0.6;filter:alpha(opacity=60);width:100%;height:100%;position: absolute;top: 0px;z-index: 99999999;display: none;}
+.dialog_content{width:200px;margin:auto;position: absolute;top:0;left:0;right:0;bottom:0;height:130px;z-index: 999999999;background: white;display: none;}
+.dialog_title{background: url(images_table/top.png) no-repeat;background-size:200px auto;width:200px;height:20px;padding-top:10px;font-size:14px;text-align: center;color:white;}
+.dialog_des{padding-bottom:20px;font-size: 14px;color:#898294;text-align: center;padding-top:20px;}
+.btn_dis{text-indent:14px;border:0px;background: url(images_table/btn_bar_help.jpg) no-repeat;float:left;margin-left:5px;width:80px;height:25px;background-size: 80px auto;}
+.btn_go{color:white;border:0px;background: url(images_table/btn_bar_create.jpg) no-repeat;float:right;margin-right:5px;width:80px;height:25px;background-size: 80px auto;}
 </style>
 <script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>js/jQueryRotate.2.2.js"></script>
 <script type="text/javascript" src="<?php Yii::app()->request->baseUrl;?>js/jquery.easing.min.js"></script>
 <script type="text/javascript">
 $(function(){
+  
         $('.tab ul li').each(function(index,obj){
             $(this).click(function(){
                 $(this).addClass('active').siblings().removeClass("active");
                 $('.tab_content'+index).show().siblings().hide();
             })
-        })
-   
-
+        });
+       
     })
 
 
@@ -109,6 +115,17 @@ $(function(){
 </head>
 
 <body>
+<div class="dialog1">
+   
+</div>
+<div class="dialog_content">
+        <div class="dialog_title">温馨提示</div>
+        <div class="dialog_des">亲，抽奖需要消耗<span class="color_e7" style="font-size:20px;">10</span>积分额！</div>
+        <div>
+           <input type="button" class="btn_dis color_e7" value="我不玩了" />
+           <input type="button" class="btn_go" value="我要玩" />
+        </div>
+   </div>
 <div class="ad">
     <img src="images_table/ad.png" class="img"/>
 </div>

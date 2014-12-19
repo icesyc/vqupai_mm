@@ -23,7 +23,7 @@ class TurnTableController extends Controller
     $prop_text = Prop::model()->findAll();
     $sign_info = SignInfo::model()->getSignInfoMonth($month);
     $cdate = date('Ymd', time());
-    $ex=UserSign::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
+    $ex=UserSign::model()->find('uid=:uid and month=:month',array(':uid'=>$this->uid,':month'=>$month));
      
     $is_count=TurnTableUser::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
 

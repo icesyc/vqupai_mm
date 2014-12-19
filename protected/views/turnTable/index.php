@@ -66,14 +66,12 @@
                 if(data.award_id==8 || data.award_id==0){
                    turntable(8,360,'很遗憾，这次您未抽中奖');
                 }
-              
+                iscount=1;
             }
 
         });
   }
-  function ajaxOne(){
-    
-  }
+
   function turntable(id,num,text){
     $('#Turntable').stopRotate();
     $("#Turntable").rotate({
@@ -90,29 +88,36 @@
     });
   }
 
+
 $(function(){
   
  //抽奖提示操作
         $('#btn').click(function(){
             
             $('#btn').attr('disabled',true);
+            if(iscount==0){
+              ajaxurl();
+            
+            }else{
+              tips();
+            }
       
-            $.ajax({
-                type: "POST",
-                cache: false,
-                url: 'index.php?r=turnTable/isone&token=' + token,
-                 data:{"uid":uid},
-                dataType: "json",
-                success: function(data) { 
-               // alert(data.err);     
-                    if(data.err==0){
-                      ajaxurl();
-                    }else{
-                        tips();
-                    }
-                }   
+            // $.ajax({
+            //     type: "POST",
+            //     cache: false,
+            //     url: 'index.php?r=turnTable/isone&token=' + token,
+            //      data:{"uid":uid},
+            //     dataType: "json",
+            //     success: function(data) { 
+            //    // alert(data.err);     
+            //         if(data.err==0){
+            //           ajaxurl();
+            //         }else{
+            //             tips();
+            //         }
+            //     }   
 
-            });   
+            // });   
         }); 
        $('.btn_dis').click(function(){
           $('.dialog1').hide();

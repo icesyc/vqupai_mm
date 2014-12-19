@@ -5,13 +5,13 @@ class TurnTableController extends Controller
   private $uid = 0;
 	public function actionIndex()
 	{
-   // $this->uid=100001;
+    //$this->uid=100001;
      
     //如果已经登陆，拉取数据
     //月份
     $month = date('Ym', time());
     //var_dump($month);
-   // $token =100001;
+    //$token =100001;
     $token = $this->getString('token');
 
     $this->uid = $this->initUser($token);
@@ -52,23 +52,23 @@ class TurnTableController extends Controller
     );
 		$this->render('main', $data);
 	}
-  public function actionIsone(){
-    $uid=Yii::app()->request->getParam('uid');
-    $this->uid=$uid;
-    $cdate = date('Ymd', time());   
-    $is_count=TurnTableUser::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
-    $is_count1=TurnTableUser::model()->findAll();
-    //p($is_count);die;
-      if(!$is_count){      
-           $data['err'] = 0;
-           $this->renderJSON($data);
-           echo json_encode($data); 
-      }else{
-           $data['err'] = 1;
-           $this->renderJSON($data);
-           echo json_encode($data); 
-      }
-  }
+  // public function actionIsone(){
+  //   $uid=Yii::app()->request->getParam('uid');
+  //   $this->uid=$uid;
+  //   $cdate = date('Ymd', time());   
+  //   $is_count=TurnTableUser::model()->find('uid=:uid and cdate=:cdate',array(':uid'=>$this->uid,':cdate'=>$cdate));
+  //   $is_count1=TurnTableUser::model()->findAll();
+  //   //p($is_count);die;
+  //     if(!$is_count){      
+  //          $data['err'] = 0;
+  //          $this->renderJSON($data);
+  //          echo json_encode($data); 
+  //     }else{
+  //          $data['err'] = 1;
+  //          $this->renderJSON($data);
+  //          echo json_encode($data); 
+  //     }
+  // }
    //ajax主方法
    public function actionMain(){
         $uid=Yii::app()->request->getParam('uid');

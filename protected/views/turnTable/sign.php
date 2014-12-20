@@ -20,7 +20,7 @@
               
               // $(".sign_list span:contains(0)").parent().hide();
               $(".sign_list span").each(function(index,obj){
-                 if($(this).text()==0){
+                 if($(this).text()==0||$(this).text()=='0'){
                    $(this).parent().hide();
                  }
               })

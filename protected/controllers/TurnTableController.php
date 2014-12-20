@@ -11,9 +11,8 @@ class TurnTableController extends Controller
     //月份
     $month = date('Ym', time());
     //var_dump($month);
-    //$token =100001;
+   // $token =100001;
     $token = $this->getString('token');
-
     $this->uid = $this->initUser($token);
        // p($this->uid);die;
     //user信息

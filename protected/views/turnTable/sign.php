@@ -18,7 +18,14 @@
                 }
 
               
-               $(".sign_list span:contains(0)").parent().hide();
+              // $(".sign_list span:contains(0)").parent().hide();
+              $(".sign_list span").each(function(index,obj){
+                 if($(this).text()==0){
+                   $(this).parent().hide();
+                 }
+              })
+             
+              
                $('.sign_list ul li').each(function(index,obj){
                  $(this).find('div.sign_content').click(function(){
                     $.ajax({
@@ -80,8 +87,14 @@
                             <?php 
                                  if($v1['coupon']==1003){
                                      print "5";
+                                 }else if($v1['coupon']==1004){
+                                     print "10";
+                                 }else if($v1['coupon']==1005){
+                                     print "20";
+                                 }else if($v1['coupon']==1006){
+                                     print "50";
                                  }else{
-                                     print "0";
+                                    print "0";
                                  }
                             ?>
            

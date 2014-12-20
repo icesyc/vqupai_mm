@@ -14,7 +14,7 @@ class SignInfoController extends Controller
       $this->uid = $this->initUser($token);
 	  // $this->uid=100001;
 	    //未登录返回
-	    if(!$this->uid){
+	    if(!$this->uid){//
 	      $this->err = 1;
 	       //echo json_encode($data); 
 	       exit;

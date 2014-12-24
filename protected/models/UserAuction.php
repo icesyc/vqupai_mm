@@ -162,8 +162,8 @@ class UserAuction extends CActiveRecord
 			$discount = 0;
 		}
 		elseif($from == 'groupmessage'){
-			$discount = max(0.01, round($discount * 0.3, 2));
-			$discount = round($discount * 0.3, 2);
+			$discount = max(0.01, round($discount * 0.8, 2));
+			$discount = round($discount * 0.8, 2);
 		}
 
 		//对拍卖对象检查所有的buff，并应用

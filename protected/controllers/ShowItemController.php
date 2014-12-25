@@ -163,7 +163,10 @@ class ShowItemController extends Controller
 				$order->uid = $uid;
 				$order->num = 1;
 				$order->price = $auction->curr_price;
-				$order->total_pay = $auction->curr_price;
+				if($auction->discount==0)
+					$order->total_pay = $auction->curr_price;
+				else
+					$order->total_pay = $auction->curr_price - $auction->discount;
 				$order->delivery_time = $consignee['delivery_time'];
 				$order->ctime = time();
 				$order->status = Order::STATUS_TOPAY;
@@ -203,7 +206,7 @@ class ShowItemController extends Controller
 	//获取该商品系统的自动拍卖
 	private function getAuction($itemId){
 		$criteria = new CDbCriteria;
-		$criteria->select = 'id,item_id,curr_price,status,round_start_time,start_time,time_interval,curr_round';
+		$criteria->select = 'id,item_id,curr_price,status,round_start_time,start_time,time_interval,curr_round,discount,sale_id';
 		$criteria->condition = sprintf('item_id=%d and status = %d', $itemId, Auction::STATUS_ONLINE);
 		$auction = Auction::model()->find($criteria);
 		if(!$auction){

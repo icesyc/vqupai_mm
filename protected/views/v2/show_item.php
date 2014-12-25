@@ -26,7 +26,7 @@ footer{position:absolute;bottom:-1px;height:35px;width:100%;}
 .btn_bt{position:absolute;margin:auto;left:0px;right:0px;top:0px;bottom:0px;opacity:1;filter:alpha(opacity=1);background: #ff2a61;width:94px;height:27px;border:1px solid #bfbfbf;text-decoration: none;color:white;margin:auto;border-radius: 4px; text-align:center;z-index:999999;}
 .btn_bt_a{position:absolute;left:0px;right:0px;top:0px;bottom:0px;margin:auto;width:97px; height:15px;font-size: 14px;color:white;text-decoration: none;text-align: center;z-index:99999999;}
 .container{overflow:auto;z-index:1;-webkit-overflow-scrolling:touch;}   
-
+.order_dis{width:100%;height:25px;margin:20px auto;background:#ff2a61;color:white;text-align:center;font-size:14px;padding-top: 8px;}
 </style>
 </head>
 <body>
@@ -35,8 +35,12 @@ footer{position:absolute;bottom:-1px;height:35px;width:100%;}
     <div class="w_320 mg_auto">
        <div class="al_center">
           <h2 class="mg_t40 w_320"><?php echo $item['title'];?></h2>
-          <div class="w_320 wechat ">市场价：￥<?php echo $item['oprice'];?>
-          <?php if(isset($auction)):?> &nbsp;/   &nbsp;微趣拍付邮领用：￥<span class="wechatcolor"><?php echo $auction['curr_price'];?></span><?php endif;?></div>
+          <div class="w_320 wechat ">市场价：￥<?php echo $item['oprice'];?> &nbsp;/   &nbsp;<?php if($auction['sale_id']==255){?>微趣拍付邮领用：<?php }else{?>微趣拍价格：<?php }?>￥<span class="wechatcolor"><?php echo $auction['curr_price'];?></span></div>
+<?php if($auction['discount']!=0):?>
+<div class="order_dis">
+   <span>下单立减：<?php echo $auction['discount'];?> 元</span>
+</div>
+<?php endif;?>
           <div class="mg_t10"><img src="<?php echo $item['pic_top'];?>" width="300" height="300"> </div>
           <div class="wechatdis mg_auto w_320">
           <p>【商品信息】</p>

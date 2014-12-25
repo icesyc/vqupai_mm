@@ -53,7 +53,7 @@ margin-bottom: 8px;}
       </div>
       <div class="price_text">
         <br>订单号码：<span class="wechatcolor"><?php echo $order['id'];?></span>
-         订单金额：￥<span class="wechatcolor"><?php echo $auction['curr_price'];?></span>
+         订单金额：￥<span class="wechatcolor"><?php echo $order['total_pay'];?></span>
       </div>
   <h3 style="padding-left:10px;">收货信息</h3>
   <h3 style="padding-left:10px;color:red;"><?php echo $err_msg;?></h3>

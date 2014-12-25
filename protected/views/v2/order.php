@@ -50,7 +50,7 @@ margin-bottom: 8px;}
         <div class="item_title"><?php echo $item['title'];?></div>
       </div>
       <div class="price_text">
-        <br>订单金额：￥<span class="wechatcolor"><?php echo $auction['curr_price'];?></span>
+        <br>商品价格：￥<span class="wechatcolor"><?php echo $auction['curr_price'];?> 订单金额：￥<span class="wechatcolor"><?php echo $auction['curr_price']-$auction['discount'];?></span>
       </div>
   <h3 style="padding-left:10px;">请填写收货信息</h3>
   <h3 style="padding-left:10px;color:red;"><?php echo $err_msg;?></h3>

@@ -164,11 +164,15 @@ class TurnTableController extends Controller
 
   //$awardId=1;
     if($awardId==0){
-      $awardId=6;
+      $awardId=5;
     }
   
 
     $returnId=$awardId;
+
+    //测试用的
+    //if($uid==137714)
+    // $returnId = 1;
 
      // p($returnId);die;
     

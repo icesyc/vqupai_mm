@@ -27,7 +27,7 @@ class KillEndController extends Controller
 
 		//取出我创建的血战
 		$criteria = new CDbCriteria;
-		$criteria->select = 'id,pool_id';
+		$criteria->select = 'id,pool_id, item_id, curr_price, reserve_price';
 		$criteria->condition = sprintf('uid=%d and status=%d', $user->id, UserAuction::STATUS_ONLINE);
 		$auctionList =	UserAuction::model()->findAll($criteria);
 		$myPool = array();
@@ -35,6 +35,14 @@ class KillEndController extends Controller
 			$tmp = $this->modelToArray($au);
 			$myPool[$au->pool_id] = $au->id;
 		}
+		//取出我创建的血战的某中一条
+		if(count($auctionList) > 0){
+			$last = array_pop($auctionList);
+			$mykill = $this->modelToArray($last);
+			$item = Item::model()->findByPk($mykill['item_id'], array('select' => 'title,pic_cover'));
+			$mykill['item'] = $this->modelToArray($item);
+		}
+
 		$data = array();
 		foreach($itemList as $item){
 			$tmp = $this->modelToArray($item);
@@ -47,7 +55,7 @@ class KillEndController extends Controller
 		}
 		$stat['uid'] = $user->id;
 		$stat['page'] = 'wap_killend';
-		$this->render('/wxkill/killend', array('data' => $data, 'stat' => $stat));
+		$this->render('/wxkill/killend', array('data' => $data, 'stat' => $stat, 'mykill' => $mykill));
 	}
 
 	//我的拍卖列表

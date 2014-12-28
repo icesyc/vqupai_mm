@@ -11,12 +11,10 @@
 </head>
 <body>
 <section id="top">
-    <div class="title_down">
-        <a class="download" href="http://www.vqupai.com/d.php">
-            <div class="btn"></div>
-        </a>
-    </div>
+    <?php $this->widget('AdWidget');?>
+
     <div class="contain">
+        <div class="dialog_dis"></div>
         <article class="fl"><img src="<?php echo $user['avatar'];?>"  width="46" height="46"/></article>
         <article class="dis_right">
             <div class="float_left discont">
@@ -26,26 +24,27 @@
         </article>
         <div class="clear"></div>
         <div class="killimg">
-            <img src="images-share/share3.jpg" width="282" height="96" />
+            <img src="images-share/kill_success.jpg" width="282" height="96" />
         </div>
         <aside class="font_13">
             <ul>
-                <li class="color364">“<?php echo $item['title'];?>”</li>
+                <li class="color364 align_center font_18">"<?php echo $item['title'];?>"</li>
                 <li>
                     <div class="product">
 
                        <img src="<?php echo $item['pic_cover']?>" width="150" height="150"  class="img" />
                         <div class="pro_dialog"></div>
                     </div>
-
                     <div class="pro_zhe">最终战果<br><div class="font_18 pad_t5"><?php echo $auction['curr_price'];?></div></div>
                     <div class="clear"></div>
                 </li>
                 <li class="align_center"><a href="index.php?r=killEnd"><input type="button" class="btn_kill2"/></a><br></li>
                 <li></li>
                 <li></li>
+
             </ul>
         </aside>
+        <div class="clear"></div>
     </div>
     <div class="bottom"><div class="dis_bottom"></div></div>
 </section>
@@ -55,28 +54,27 @@
     <div class="friend_bg">
         <aside>
             <ul>
-<?php
-  if(count($helpers)>0) {
-    foreach($helpers as $helper) {
-?>
-                 <li>
-                     <div class="w_132 float_left" style="text-align: right;padding-right:5px;"><?php echo $helper['nick'];?></div>
-                     <div class="friend_img float_left">
-                         <img src="<?php echo $helper['avatar'];?>" width="20" height="20" />
-                     </div>
-                     <div class="w_132 float_left" style="padding-left:5px;"><span class="float_left"> 帮忙杀掉了<?php echo $helper['discount'];?>元</span><span class="float_right color_555"></span></div>
-                     <div class="clear"></div>
-                 </li>
-<?php
-    }
-  }
-?>
+                <?php foreach($helpers as $helper):?>
+                <li>
+                    <div class="w_132 float_left" style="text-align: right;padding-right:5px;"><?php echo $helper['nick'];?></div>
+                    <div class="friend_img float_left">
+                        <img src="<?php echo $helper['avatar'];?>" width="20" height="20" />
+                    </div>
+                    <div class="w_132 float_left" style="padding-left:5px;"><span class="float_left"><?php echo $helper['discount'];?>元</span><span class="float_right color_555"><?php echo $helper['ctime']?></span></div>
+                    <div class="clear"></div>
+                </li>
+                <?php endforeach;?>
             </ul>
 
         </aside>
     </div>
 </section>
-<script>
+<div class="downbtn"></div>
+<div class="logo_bt float_left"></div>
+<div class="text_bt float_left">不够爽？来APP杀个痛快！</div>
+<div class="btn_bt float_right"></div>
+<a href="http://www.vqupai.com/d.php?s=wap&c=3&uid=<?php echo $user['id'];?>" class="btn_bt_a">立刻下载</a>
+<script type="text/javascript">
 //上报数据
 var url="/ver/i.gif?report=js&c=ua&<?php echo http_build_query($loger)?>";
 var img = new Image;

@@ -21,6 +21,15 @@ class UserAuctionPool extends CActiveRecord
 	const STATUS_ONLINE = 1;
 	const STATUS_FINISH = 2;
 
+	const TYPE_NORMAL = 1; //普通商品的血战
+	const TYPE_DISCOUNT = 2; //惠吃惠喝的血战
+
+	const CHANNEL_NOMAL = 0; //普通频道
+	const CHANNEL_TODAY = 1; //今日频道
+	const CHANNEL_LUXURIES = 2; //奢侈品频道
+	const CHANNEL_BOMB = 3; //爆款
+	const CHANNEL_LOWEST = 4; //1元血战
+
 	/**
 	 * @return string the associated database table name
 	 */

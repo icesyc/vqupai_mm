@@ -6,17 +6,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="css/share.css" />
-    <script src="js/zepto.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="js/WeixinApi.js"></script>
 </head>
 <body>
 <section id="top">
-    <div class="title_down">
-        <a class="download" href="http://www.vqupai.com/d.php?s=wap&c=3&uid=<?php echo $user['id'];?>">
-            <div class="btn"></div>
-        </a>
-    </div>
+    <?php $this->widget('AdWidget');?>
+    
     <div class="contain">
         <div class="dialog_dis"></div>
         <article class="fl"><img src="<?php echo $user['avatar'];?>"  width="46" height="46"/></article>
@@ -38,14 +34,13 @@
                 <li style="width: 200px;margin:auto;text-align:center">
                     <a href="index.php?r=killEnd"><input type="button"  class="btn_kill3"/></a>
                 </li>
-                <li class="color364 align_center font_18">在微趣拍APP内，帮杀额度更给力哦～<br><a href="http://www.vqupai.com/d.php?s=wap&c=4&uid=<?php echo $user['id'];?>" class="colorff2">立刻下载微趣拍APP，拥有自己的一元商品！</a></li>
+                <li class="color364 align_center">立刻下载微趣拍APP，拥有自己的一元商品！</li>
                 <li class="pro">
                     <?php foreach($items as $it):?>
                     <div><a href="?r=item/show&id=<?php echo $it['id'];?>"><img src="<?php echo $it['pic_cover'];?>" width="50" height="50" alt="<?php echo $it['title'];?>" /></a></div>
                     <?php endforeach;?>
                     <div class="clear"></div>
                 </li>
-
             </ul>
         </aside>
         <div class="clear"></div>
@@ -58,29 +53,37 @@
     <div class="friend_bg">
         <aside>
             <ul>
-<?php
-  if(count($helpers)>0) {
-    foreach($helpers as $helper) {
-?>
-                 <li>
-                     <div class="w_132 float_left" style="text-align: right;padding-right:5px;"><?php echo $helper['nick'];?></div>
-                     <div class="friend_img float_left">
-                         <img src="<?php echo $helper['avatar'];?>" width="20" height="20" />
-                     </div>
-                     <div class="w_132 float_left" style="padding-left:5px;"><span class="float_left"> 帮忙杀掉了<?php echo $helper['discount'];?>元</span><span class="float_right color_555"></span></div>
-                     <div class="clear"></div>
-                 </li>
-<?php
-    }
-  }
-?>
+                <?php foreach($helpers as $helper):?>
+                <li>
+                    <div class="w_132 float_left" style="text-align: right;padding-right:5px;"><?php echo $helper['nick'];?></div>
+                    <div class="friend_img float_left">
+                        <img src="<?php echo $helper['avatar'];?>" width="20" height="20" />
+                    </div>
+                    <div class="w_132 float_left" style="padding-left:5px;"><span class="float_left"><?php echo $helper['discount'];?>元</span><span class="float_right color_555"><?php echo $helper['ctime']?></span></div>
+                    <div class="clear"></div>
+                </li>
+                <?php endforeach;?>
             </ul>
 
         </aside>
     </div>
 </section>
 <div class="dialog"></div>
-<script>
+<div class="downbtn"></div>
+<div class="logo_bt float_left"></div>
+<div class="text_bt float_left">不够爽？来APP杀个痛快！</div>
+<div class="btn_bt float_right"></div>
+<a href="http://www.vqupai.com/d.php?s=wap&c=3&uid=<?php echo $user['id'];?>" class="btn_bt_a">立刻下载</a>
+<script type="text/javascript">
+$(function(){
+    $(".dialog").show();
+    $(".dialog_dis").show();
+    $(".dialog,.dialog_dis").click(function(){
+        $(".dialog").hide();
+        $(".dialog_dis").hide();
+    })
+});
+
 //上报数据
 var url="/ver/i.gif?report=js&c=ua&<?php echo http_build_query($loger)?>";
 var img = new Image;

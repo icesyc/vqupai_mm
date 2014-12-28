@@ -15,6 +15,7 @@ class Controller extends CController
 		Yii::import('application.extensions.wechat.Wechat');
 		Yii::app()->session->open();
 		$user = Yii::app()->session['user'];
+		//$user = User::model()->findByPk(100001);
 		if($user){
 			return $user;
 		}

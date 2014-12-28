@@ -14,5 +14,9 @@ scp -r protected/views root@115.28.134.105:/alidata/www/vqupai/$HOST/protected/
 scp -r protected/components root@115.28.134.105:/alidata/www/vqupai/$HOST/protected/
 scp -r $INDEX_FILE root@115.28.134.105:/alidata/www/vqupai/$HOST/index.php
 scp -r protected/config/production.php root@115.28.134.105:/alidata/www/vqupai/$HOST/protected/config/main.php
+
 #scp -r protected/components root@115.28.134.105:/alidata/www/vqupai/$HOST/protected
 #scp -r protected/extensions root@115.28.134.105:/alidata/www/vqupai/$HOST/protected
+scp -r images-share root@115.28.134.105:/alidata/www/vqupai/$HOST/
+scp -r css root@115.28.134.105:/alidata/www/vqupai/$HOST/
+scp -r killend/js root@115.28.134.105:/alidata/www/vqupai/$HOST/killend/

@@ -1,5 +1,7 @@
 html,body{padding:0px;margin:0px;font-size: 12px;background: white;}
+ul{list-style-type: none;padding:0px;margin:0px;}
 #top{width:100%;background: #dfe2d6;height: 100%;padding:0px 0px 0px 0px;position: relative;}
+.hidden{display: none;}
 .contain{width:305px;margin:auto;}
 .font_13{font-size: 13px;}
 .font_18{font-size: 18px;}
@@ -13,11 +15,11 @@ html,body{padding:0px;margin:0px;font-size: 12px;background: white;}
 .pad_t5{padding-top: 5px;}
 .float_left{float:left;}
 .float_right{float:right;}
-.fl{float:left;border:2px solid white;width:46px;height:46px;border-radius:23px;margin-top:45px;}
+.fl{float:left;border:2px solid white;width:46px;height:46px;border-radius:23px;margin-top:2px;}
 .fl img{background-size: contain;width:46px;height:46px;border-radius:23px;}
 .clear{clear:both;}
-.dis_right{width:250px;float: right;height:34px;margin-top:8px;margin-top:55px;}
-.dis_right .discont{background:url("../images-share/pop.png") no-repeat;width:251px;height:34px;border-radius: 4px;color:white;background-size: contain;}
+.dis_right{width:250px;float: right;height:34px;margin-top:8px;margin-top:12px;}
+.dis_right .discont{background:url("../images-share/pop.png") no-repeat;width:246px;height:34px;border-radius: 4px;color:#364e62;background-size: contain;}
 .dis_right .discont div{height:34px;width:100%;padding-left: 15px; vertical-align:middle;display:table-cell;}
 .killimg img{margin:5px 12px;width:282px;text-align: center;}
 aside ul{list-style-type: none;margin:0px;padding:0px;}
@@ -51,18 +53,113 @@ aside ul li{line-height: 16px;word-spacing: normal;word-break: break-all;padding
 .download .btn{background: url("../images-share/download.png") no-repeat;width:259px;height:26px;margin: auto;text-decoration: none;background-size: contain;}
 
 #msg_tip{
-background:rgba(0,0,0,.8);
-max-width:90%;
-width:12em;
-height:30px;
-line-height:30px;
-font-size:12px;
-color:#fff;
-border-radius:5px;
-text-align:center;
-margin: auto;
-position: absolute;
-z-index:100;
-top: 0; left: 0; bottom: 0; right: 0;
-display:none;
+    background:rgba(0,0,0,.8);
+    max-width:90%;
+    width:12em;
+    height:30px;
+    line-height:30px;
+    font-size:12px;
+    color:#fff;
+    border-radius:5px;
+    text-align:center;
+    margin: auto;
+    position: absolute;
+    z-index:100;
+    top: 0; left: 0; bottom: 0; right: 0;
+    display:none;
+    padding:4px 10px;
 }
+
+.ad{position: relative;margin: 0px 10px;}
+.adimg{width:100%;min-width:300px;min-height:50px;background-size:cover;margin:auto;}
+.ad .text{position: absolute;background: url('../images-share/ad_text.png') no-repeat;width:50px;height:18px;background-size:contain;bottom:0px;right:0px;text-align: center;color:white;font-size:12px;}
+.ad .text span{vertical-align: middle;display: table-cell;width:50px;height:18px;}
+
+.downbtn{width:100%;position: fixed;bottom:0;background:#000000;opacity:0.5;filter:alpha(opacity=50);height:35px;z-index:99;}
+.logo_bt{position: fixed;bottom:0; background: url("../images-share/logo.png") no-repeat;width:30px;height:30px;background-size: contain;margin:2px 8px;z-index:999999;}
+.text_bt{position: fixed;bottom:0;color:white;margin-left:41px;margin-bottom:9px;z-index:999999;}
+.btn_bt{background: #ff2a61;opacity:0.8;filter:alpha(opacity=80);width:94px;height:27px;border:1px solid #bfbfbf;text-decoration: none;color:white;border-radius: 4px; text-align:center;position: fixed;z-index:999999;bottom:3px;right:8px;}
+.btn_bt_a{position: fixed;color:white;z-index:999999;right:32px;bottom:11px;text-decoration: none;}
+/*新增按钮*/
+.icon_btn{background: url("../images-share/icon_btn.png") no-repeat;background-size: contain;width:148px;height:30px;marght: -10px;margin-top:10px;color:white;text-align: center;}
+.icon_btn div{font-size: 14px;width: 90%; text-align: center;vertical-align: middle; display: table-cell; height: 30px;}
+/*血战页面*/
+.my_bar{height:60px;margin:5px 10px 0px;background: white;}
+.my_bar_title{width:20px;height:60px;background: #ff2a61;color:white;position: relative;float: left;}
+.my_bar_title span{writing-mode: tb-rl; width: 16px; position: absolute; top: 5px;  left: 3px;line-height: 12px;word-break: break-all;}
+.my_bar .img{background-size: contain;width:50px;height:50px;margin-left: 8px;margin-top:5px;float:left;}
+.my_bar_content{margin-left:80px;position: relative;height:60px;}
+.my_bar_content .title{white-space: nowrap; text-overflow: ellipsis;color: #364e62;font-size: 14px; padding-top: 5px;margin-right: 10px;word-break: break-all;word-spacing: normal;height:14px;line-height: 14px; overflow: hidden;}
+.price{ padding-top: 8px;font-size: 13px;}
+.btn_icon{text-decoration:none;background:#ff2a61;width:62px;height:21px; float:right;border-radius:4px;color:white;position: absolute;bottom:5px;right:10px;color:white;text-align: center; }
+.btn_icon div{vertical-align: middle;height:21px;display: table-cell;text-align: center;width:62px;}
+.contain_new{width:100%;}
+
+.bar_list{margin:8px 10px 0px;background: white;height:150px;}
+.bar_list .img{background-size: contain;width:130px;height:130px;margin:10px;float: left;}
+.bar_list .text{margin-left:150px;margin-top:10px;}
+.bar_list .text .title{padding-top: 10px;font-size:14px;padding-right: 10px;color: #3a3e3f;height: 30px; line-height: 15px;  word-break: break-all;word-spacing: normal; overflow: hidden; text-overflow: ellipsis;}
+.bar_list .text .time{color:#898294;padding-top:5px;font-size: 12px;}
+.icon_create{background: url("../images-share/icon_create.png") no-repeat;background-size:contain;width:91px;height:28px;margin-top: 6px;}
+.icon_create a{text-decoration: none;color: white;width:91px;height:28px;vertical-align: middle;display: table-cell;text-indent: 15px;}
+
+
+.bar{max-width:414px;min-width:320px;margin: auto;}
+.bar_new{background: white;margin:8px 10px;height:115px;}
+.bar_new div {margin:5px;}
+.bar_new img{border:1px solid #fefefe;float:left;margin: 5px;display: block;}
+
+.bar_new .text{font-size:12px;padding-top:8px;}
+.bar_new .text ul{ list-style-type: none;padding:0px;margin:0px;}
+.bar_new .text ul li{padding-top:5px;color:#898294;word-break: break-all;line-height: 14px;}
+.bar_new .text ul li.text{padding-top:0px;color:#898294;word-break: break-all;height:35px;text-overflow:ellipsis;}
+.bar_new .text ul li.red{color:#ff2a61;}
+.bar_new .text ul li .status { width: 70px; height: 25px;border: 1px solid #b83a25;background: #ff2a61; color: #fff; border-radius: 3px; -webkit-appearance: none;}
+.bar_new .text ul li .daoju { width: 70px; height: 25px;border: 1px solid #c79100; background: #f9bb14;color: #fff;border-radius: 3px;-webkit-appearance: none;margin-left: 15px;}
+.share_container { margin:0px 10px 8px; background: #fff;padding-bottom:8px; }
+.bar_dest {text-align: center; width: 200px; margin: auto;padding-top:20px;}
+.share_btn {background: url(../images-share/auction_share.png) no-repeat top center; background-size: contain;width: 45px;height: 45px;margin: 10px auto 0;}
+.friend{font-size:12px;background: url("../images-share/kill_bg.jpg") repeat-y;background-size: contain;width:300px;margin: 15px auto 0px;}
+.bar_see{background:white;padding:10px 5px;margin:8px 10px;text-align: center;}
+.bar_see a{display:block; text-decoration:none;color:#ff2a61;}
+.clear{clear:both;}
+.friend .bottom1{width: 100%;}
+.friend .bottom1 ul{width:100%;}
+.friend .bottom1 ul li{width:30%;text-align:center;float: left;margin-top: 5px;}
+.friend .bottom1 img{border-radius: 20px;}
+.dialog_text{width:95%;background-size: cover;position: absolute;top:5px;margin:auto;left:0px;right:0px;display:none;z-index: 999999999;}
+
+.icon{background: white;margin:20px 10px 0px;height:75px;}
+.icon ul{list-style-type: none;padding:0px;margin:0px;}
+.icon ul li{float: left;width:33%;}
+.icon ul li input{border:1px solid #ff2a61;color:#ff2a61;border-radius: 4px;}
+.icon_return{background:white url("../images-share/icon_return.jpg") left no-repeat;background-size: 7px 11px;background-position: 4px 4px;width:80%;height:22px;}
+.icon_store{background:white url("../images-share/icon_store.jpg") left no-repeat;background-size: 7px 11px;background-position: 4px 4px;width:80%;height:22px;}
+.icon_share{background:white url("../images-share/icon_share.jpg") left no-repeat;background-size: 7px 11px;background-position: 4px 4px;width:80%;height:22px;}
+.article{color:#ff2a61;padding:8px 10px;word-break: break-all;line-height:18px;font-size: 12px;}
+
+.text_dialog{width:250px;height:155px;margin:auto;position: absolute;z-index: 999999999;margin: auto;top:0px;right:0px;left:0px;bottom:0px;background:white;display: none;}
+.text_dialog .text{font-size:15px;color:#364e62;width:180px;margin:10px auto;text-align: center;line-height: 22px;}
+.price_dialog{font-size:20px;color:#e76049;}
+.dialog_cont{width:200px;margin:10px auto 5px;}
+.text_dialog .weixin{color:#898294;text-align: center;margin:5px auto;font-size:12px;}
+.dialog_cont  .btn3 { width:80px;line-height:30px;border:1px solid #ff2a61;text-align: center;border-radius: 3px;float:left;}
+.dialog_cont  .btn3 a{color:#ff2a61;text-decoration: none;}
+.dialog_cont  .btn1 {background: #ff2a61;width:80px;line-height:30px;border:1px solid #ff2a61;text-align: center;border-radius: 3px;float:right;}
+.text_dialog  .btn1 a{color:white;text-decoration: none;color: white;}
+.dialog-v1 {background:white;width:80%;position: absolute;z-index: 999999999;display: none;}
+.dialog-v1 h2{color: #ff2a61; text-align: center; font-size: 16px;}
+.dialog-v1 .content{text-align: center; padding: 10px; font-size: 14px;color:#999;line-height: 1.5;}
+.dialog-btn{text-decoration:none;background: #ff2a61; color: #fff; width: 100%; height: 35px; line-height:35px; font-size: 14px;text-align: center;display: block;}
+.mask{position:absolute;z-index:999;width:100%;height:100%;background:#000;opacity:.4;left:0;top:0;}
+
+.prop-list {margin-top: 8px; background: #fff;padding: 10px;}
+.extendDuration {width: 39px; height: 25px;background: url(../images/extendDuration.png) no-repeat; background-size: contain;}
+.prop-list .prop-desc { margin-left: 45px;}
+.prop-list .name { margin-bottom: 4px;}
+.prop-list .desc {color: #555;line-height: 1.2;ont-size: 12px;}
+.doubleDiscount { width: 39px;height: 25px; background: url(../images/doubleDiscount.png) no-repeat;background-size: contain;}
+.plist_shuo { background: #fff; margin: 10px auto; font-size: 12px; padding: 10px 30px;color: #555;}
+.plist_shuo li{line-height: 20px;word-spacing: normal;word-break: break-all;}
+.prop-btn{background: #ff2a61;width:100%;height: 25px;text-align: center;color:white;padding-top: 13px;font-size: 14px;display:block;text-decoration: none;}
+.fleft{float:left;}

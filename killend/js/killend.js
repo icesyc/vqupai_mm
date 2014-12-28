@@ -57,7 +57,7 @@ $(function(){
             }
             //积分不够
             if(rsp.code == 1100){
-                $('.dialog').render(rsp).popup();
+                $('.j-no-score').render(rsp).popup();
             }else{
                 $('#msg_tip').toast(rsp.msg);
             }

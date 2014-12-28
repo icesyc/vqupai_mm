@@ -10,12 +10,16 @@
     <script type="text/javascript" src="js/WeixinApi.js"></script>
 </head>
 <body>
+
 <section id="top">
-    <div class="title_down">
-        <a class="download" href="http://www.vqupai.com/d.php?s=wap&c=3&uid=<?php echo $user['id'];?>">
-            <div class="btn"></div>
-        </a>
-    </div>
+   <?php $this->widget('AdWidget');?>
+
+   <div class="ad">
+       <a class="icon_btn float_right" href="index.php?r=killEnd"><div href="#">立刻创建我的血战</div></a>
+       <div class="clear"></div>
+
+   </div>
+
    <div class="contain">
        <article class="fl"><img src="<?php echo $user['avatar'];?>"  width="46" height="46"/></article>
        <article class="dis_right">
@@ -30,49 +34,52 @@
        </div>
        <aside class="font_13">
            <ul>
-               <li class="color364">“<?php echo $item['title'];?>”</li>
+               <li class="color364 align_center">“<?php echo $item['title'];?>”</li>
                <li>
                   <div class="product">
                       <img src="<?php echo $item['pic_cover']?>" width="150" height="150"  class="img" />
                       <input type="button" class="btn_kill1 po_ab" id="helpBtn" />
-         <div id="msg_tip"></div>
                   </div>
+
                </li>
                <li class="color364 align_center">当前价格</li>
                <li class="colorff2 align_center font_18"><?php echo $auction['curr_price'];?></li>
                <li></li>
            </ul>
        </aside>
+
    </div>
    <div class="bottom"><div class="dis_bottom"></div></div>
-</section>
-<section id="friend">
+
+ </section>
+
+ <section id="friend">
      <div class="color364 align_center">———— 有<?php echo $helper_count?>个小伙伴出手了 ————</div>
      <div class="friend_top"></div>
      <div class="friend_bg">
          <aside>
              <ul>
-<?php
-  if(count($helpers)>0) {
-    foreach($helpers as $helper) {
-?>
-                 <li>
-                     <div class="w_132 float_left" style="text-align: right;padding-right:5px;"><?php echo $helper['nick'];?></div>
-                     <div class="friend_img float_left">
-                         <img src="<?php echo $helper['avatar'];?>" width="20" height="20" />
-                     </div>
-                     <div class="w_132 float_left" style="padding-left:5px;"><span class="float_left"> 帮忙杀掉了<?php echo $helper['discount'];?>元</span><span class="float_right color_555"></span></div>
-                     <div class="clear"></div>
-                 </li>
-<?php
-    }
-  }
-?>
+                <?php foreach($helpers as $helper):?>
+                <li>
+                    <div class="w_132 float_left" style="text-align: right;padding-right:5px;"><?php echo $helper['nick'];?></div>
+                    <div class="friend_img float_left">
+                        <img src="<?php echo $helper['avatar'];?>" width="20" height="20" />
+                    </div>
+                    <div class="w_132 float_left" style="padding-left:5px;"><span class="float_left"><?php echo $helper['discount'];?>元</span><span class="float_right color_555"><?php echo $helper['ctime']?></span></div>
+                    <div class="clear"></div>
+                </li>
+                <?php endforeach;?>
              </ul>
 
          </aside>
      </div>
-</section>
+
+ </section>
+ <div class="downbtn"></div>
+ <div class="logo_bt float_left"></div>
+ <div class="text_bt float_left">不够爽？来APP杀个痛快！</div>
+ <div class="btn_bt float_right"></div>
+<a href="http://www.vqupai.com/d.php?s=wap&c=3&uid=<?php echo $user['id'];?>" class="btn_bt_a">立刻下载</a>
 <input type="hidden" id="auctionId" value="<?php echo $auction['id'];?>"/>
 
 <script type='text/javascript'>
@@ -129,5 +136,5 @@ WeixinApi.ready(function(Api){
 
 });
 </script>
-</body>
-</html>
+ </body>
+ </html>

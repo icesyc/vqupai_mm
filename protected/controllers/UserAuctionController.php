@@ -82,7 +82,7 @@ class UserAuctionController extends Controller
 		$help_record = array();
 		$cri = new CDbCriteria;
 		$cri->condition = sprintf('auction_id = %d', $id);
-		$cri->select = 'id,uid,open_id,source,discount';
+		$cri->select = 'id,uid,open_id,source,discount,ctime';
 		$cri->order = 't.id desc';
 		$cri->limit = 30;
 		$cri->with = array('user');
@@ -95,6 +95,7 @@ class UserAuctionController extends Controller
 				'nick' => $helper->user->nick,
 				'avatar' => $helper->user->avatar,
 				'discount' => $helper->discount,
+				'ctime' => $this->timeAgo($helper->ctime)
 			);
 		}
 		$data['helpers'] = $help_record;
@@ -106,12 +107,12 @@ class UserAuctionController extends Controller
 		if($data['auction']['status'] > 1) {
 
 			$criteria = new CDbCriteria;
-			$criteria->condition = sprintf('status = %d', Auction::STATUS_ONLINE);
+			$criteria->condition = sprintf('channel = %d', UserAuctionPool::CHANNEL_LOWEST);
 			$criteria->limit = 3;
 			$criteria->with = array(
 				'item' => array('select' => 'id,title,pic_cover'),
 			);
-			$auctions = Auction::model()->findAll($criteria);
+			$auctions = UserAuctionPool::model()->findAll($criteria);
 			foreach($auctions as $auction){
 				$auction->item->pic_cover = $this->getImageBySize($auction->item->pic_cover, 200);
 				$data['items'][] = $auction->item->attributes;
@@ -176,20 +177,20 @@ class UserAuctionController extends Controller
 				'nick' => $helper->user->nick,
 				'avatar' => $helper->user->avatar,
 				'discount' => $helper->discount,
+				'ctime' => $this->timeAgo($helper->ctime)
 			);
 		}
 		$data['helpers'] = $help_record;
 
 		$criteria = new CDbCriteria;
-		$criteria->condition = sprintf('status = %d', Auction::STATUS_ONLINE);
+		$criteria->condition = sprintf('channel = %d', UserAuctionPool::CHANNEL_LOWEST);
 		$criteria->limit = 3;
 		$criteria->with = array(
 			'item' => array('select' => 'id,title,pic_cover'),
 		);
-		$auctions = Auction::model()->findAll($criteria);
+		$auctions = UserAuctionPool::model()->findAll($criteria);
 		foreach($auctions as $auction){
-			$pic_array = explode("/", $auction->item->pic_cover);
-			$auction->item->pic_cover = '/'.$pic_array[1].'/'.$pic_array[2].'/'.$pic_array[3].'/200.'.$pic_array[4];
+			$auction->item->pic_cover = $this->getImageBySize($auction->item->pic_cover, 200);
 			$data['items'][] = $auction->item->attributes;
 		}
 		if(!$data['user']['avatar']){

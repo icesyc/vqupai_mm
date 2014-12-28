@@ -37,17 +37,17 @@ class Circle extends CActiveRecord
 		);
 	}
 
-	public function increase($id, $field){
+	public static function increase($id, $field){
 		$rows = self::model()->updateCounters(array($field => 1), "id=$id");
 		return true;
 	}
 
-	public function decrease($id, $field){
+	public static function decrease($id, $field){
 		$rows = self::model()->updateCounters(array($field => -1), "id=$id and $field > 0");
 		return true;
 	}
 
-	public function postShowOrder($uid, $content, $data){
+	public static function postShowOrder($uid, $content, $data){
 		$circle = new self;
 		$circle->uid = $uid;
 		$circle->content = $content;
@@ -64,7 +64,7 @@ class Circle extends CActiveRecord
 		return false;
 	}
 
-	public function postNewAuction($uid, $data){
+	public static function postNewAuction($uid, $data){
 		$circle = new self;
 		$circle->uid = $uid;
 		$circle->ctime = time();

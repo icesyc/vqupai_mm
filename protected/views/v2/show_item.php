@@ -41,7 +41,7 @@ footer{position:absolute;bottom:-1px;height:35px;width:100%;}
    <span>下单立减：<?php echo $auction['discount'];?> 元</span>
 </div>
 <?php endif;?>
-          <div class="mg_t10"><img src="<?php echo $item['pic_top'];?>" width="300" height="300"> </div>
+          <div class="mg_t10"><img src="<?php echo $item['pic_top'];?>" width="320" height="200"> </div>
           <div class="wechatdis mg_auto w_320">
           <p>【商品信息】</p>
           <?php echo $item['content'];?>

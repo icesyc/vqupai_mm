@@ -72,7 +72,7 @@
 var stat = "<?php echo http_build_query($stat);?>";
 var img = new Image;
 img.src = 'http://www.vqupai.com/ver/i.gif?' + stat + '&_=' + Math.random();
-$(document).on('click', '.my_bar', function(){
+$('.my_bar').click(function(){
   location.href = $(this).data('url');
 });
 </script>

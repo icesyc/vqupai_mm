@@ -1,6 +1,6 @@
 html,body{padding:0px;margin:0px;font-size: 12px;background: white;}
 ul{list-style-type: none;padding:0px;margin:0px;}
-#top{width:100%;background: #dfe2d6;height: 100%;padding:0px 0px 0px 0px;position: relative;}
+#top{width:100%;background: #dfe2d6;height: 100%;position: relative;}
 .hidden{display: none;}
 .contain{width:305px;margin:auto;}
 .font_13{font-size: 13px;}
@@ -35,7 +35,7 @@ aside ul li{line-height: 16px;word-spacing: normal;word-break: break-all;padding
 .bottom{background: url("../images-share/bottom.jpg") repeat-y;width:100%;height:20px;background-size: 100% 20px;}
 .dis_bottom{background: url("../images-share/bg_top.jpg") no-repeat;width:320px;height:20px;margin:auto;background-size: contain;}
 
-#friend{width:305px;margin:auto;}
+#friend{width:305px;margin:auto;padding-bottom:45px;}
 .friend_top{background:url("../images-share/kill_bg_tip.jpg") no-repeat;background-size: contain;width:305px;height:22px;margin-top:8px;}
 .friend_bg{background: url("../images-share/kill_bg.jpg") repeat-y;background-size: contain;width:305px;height:100%;margin-top:-12px;}
 .friend_img img{width:40px;height:40px;border-radius: 20px;}
@@ -81,8 +81,7 @@ aside ul li{line-height: 16px;word-spacing: normal;word-break: break-all;padding
 .btn_bt{background: #ff2a61;opacity:0.8;filter:alpha(opacity=80);width:94px;height:27px;border:1px solid #bfbfbf;text-decoration: none;color:white;border-radius: 4px; text-align:center;position: fixed;z-index:999999;bottom:3px;right:8px;}
 .btn_bt_a{position: fixed;color:white;z-index:999999;right:32px;bottom:11px;text-decoration: none;}
 /*新增按钮*/
-.icon_btn{background: url("../images-share/icon_btn.png") no-repeat;background-size: contain;width:148px;height:30px;marght: -10px;margin-top:10px;color:white;text-align: center;}
-.icon_btn div{font-size: 14px;width: 90%; text-align: center;vertical-align: middle; display: table-cell; height: 30px;}
+a.icon_btn,a.icon_btn:visited{background: url("../images-share/icon_btn.png") no-repeat;text-decoration: none;background-size: contain;width:148px;line-height:30px;margin-top:10px;color:white;text-align: center;text-indent:-1.2em;}
 /*血战页面*/
 .my_bar{height:60px;margin:5px 10px 0px;background: white;}
 .my_bar_title{width:20px;height:60px;background: #ff2a61;color:white;position: relative;float: left;}
@@ -90,16 +89,16 @@ aside ul li{line-height: 16px;word-spacing: normal;word-break: break-all;padding
 .my_bar .img{background-size: contain;width:50px;height:50px;margin-left: 8px;margin-top:5px;float:left;}
 .my_bar_content{margin-left:80px;position: relative;height:60px;}
 .my_bar_content .title{white-space: nowrap; text-overflow: ellipsis;color: #364e62;font-size: 14px; padding-top: 5px;margin-right: 10px;word-break: break-all;word-spacing: normal;height:14px;line-height: 14px; overflow: hidden;}
-.price{ padding-top: 8px;font-size: 13px;}
+.price{font-size: 13px;line-height:25px;padding-top:4px;}
 .btn_icon{text-decoration:none;background:#ff2a61;width:62px;height:21px; float:right;border-radius:4px;color:white;position: absolute;bottom:5px;right:10px;color:white;text-align: center; }
 .btn_icon div{vertical-align: middle;height:21px;display: table-cell;text-align: center;width:62px;}
-.contain_new{width:100%;}
+.contain_new{width:100%;padding-bottom:45px;}
 
 .bar_list{margin:8px 10px 0px;background: white;height:150px;}
 .bar_list .img{background-size: contain;width:130px;height:130px;margin:10px;float: left;}
 .bar_list .text{margin-left:150px;margin-top:10px;}
 .bar_list .text .title{padding-top: 10px;font-size:14px;padding-right: 10px;color: #3a3e3f;height: 30px; line-height: 15px;  word-break: break-all;word-spacing: normal; overflow: hidden; text-overflow: ellipsis;}
-.bar_list .text .time{color:#898294;padding-top:5px;font-size: 12px;}
+.bar_list .text .time{color:#898294;padding-top:5px;font-size: 12px;line-height:12px;}
 .icon_create{background: url("../images-share/icon_create.png") no-repeat;background-size:contain;width:91px;height:28px;margin-top: 6px;}
 .icon_create a{text-decoration: none;color: white;width:91px;height:28px;vertical-align: middle;display: table-cell;text-indent: 15px;}
 
@@ -116,7 +115,7 @@ aside ul li{line-height: 16px;word-spacing: normal;word-break: break-all;padding
 .bar_new .text ul li.red{color:#ff2a61;}
 .bar_new .text ul li .status { width: 70px; height: 25px;border: 1px solid #b83a25;background: #ff2a61; color: #fff; border-radius: 3px; -webkit-appearance: none;}
 .bar_new .text ul li .daoju { width: 70px; height: 25px;border: 1px solid #c79100; background: #f9bb14;color: #fff;border-radius: 3px;-webkit-appearance: none;margin-left: 15px;}
-.share_container { margin:0px 10px 8px; background: #fff;padding-bottom:8px; }
+.share_container { margin:0px 10px 0px; background: #fff;padding-bottom:8px; }
 .bar_dest {text-align: center; width: 200px; margin: auto;padding-top:20px;}
 .share_btn {background: url(../images-share/auction_share.png) no-repeat top center; background-size: contain;width: 45px;height: 45px;margin: 10px auto 0;}
 .friend{font-size:12px;background: url("../images-share/kill_bg.jpg") repeat-y;background-size: contain;width:300px;margin: 15px auto 0px;}

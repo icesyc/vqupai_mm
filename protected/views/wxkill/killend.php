@@ -19,13 +19,13 @@
 
     <div class="contain_new">
        <?php if($mykill):?>
-       <section class="my_bar">
+       <section class="my_bar" data-url="index.php?r=killEnd/view&id=<?php echo $mykill['id']?>">
            <div class="my_bar_title"><span>我的血战</span></div>
            <div class="img"><img src="http://m.vqupai.com<?php echo $mykill['item']['pic_cover']?>" width="50" /></div>
            <div class="my_bar_content">
                <div class="title"><?php echo $mykill['item']['title']?></div>
                <div class="colorff2 price"><span>当前价:<?php echo $mykill['curr_price']?>  </span>底价:<?php echo $mykill['reserve_price']?></span></div>
-               <a class="btn_icon" href="index.php?r=killEnd/view&id=<?php echo $mykill['id']?>"><div class="mg_t5">点击进入</div></a>
+               <a class="btn_icon"><div class="mg_t5">点击进入</div></a>
            </div>
            <div class="clear"></div>
        </section>
@@ -72,6 +72,9 @@
 var stat = "<?php echo http_build_query($stat);?>";
 var img = new Image;
 img.src = 'http://www.vqupai.com/ver/i.gif?' + stat + '&_=' + Math.random();
+$(document).on('click', '.my_bar', function(){
+  location.href = $(this).data('url');
+});
 </script>
 </body>
 </html>

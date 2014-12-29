@@ -17,7 +17,6 @@
        </div>
        <div class="al_center">
           <h4 class="mg_t40 w_320"><?php echo $item['title'];?></h4>
-          <div class="w_320 wechat ">市场价：￥<?php echo $item['oprice'];?>
           <?php if(isset($auction)):?> &nbsp;/   &nbsp;微趣拍价：￥<span class="wechatcolor"><?php echo $auction['curr_price'];?></span><?php endif;?></div>
           <div class="mg_t10"><img src="<?php echo $item['pic_top'];?>" width="300" height="300"> </div>
           <div class="wechatdis mg_auto w_320">

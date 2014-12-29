@@ -19,7 +19,7 @@ class KillEndController extends Controller
 		$criteria->select = 'id, pic_url, start_price, reserve_price, duration, left_num';
 		$criteria->order = 'display_order desc, t.ctime desc';
 		$criteria->limit = 20;
-		$criteria->condition = sprintf('status=%d', UserAuctionPool::STATUS_ONLINE);
+		$criteria->condition = sprintf('status=%d and wap=1', UserAuctionPool::STATUS_ONLINE);
 		$criteria->with = array(
 			'item' => array('select' => 'title, pic_cover, oprice')
 		);

@@ -15,7 +15,7 @@
    <?php $this->widget('AdWidget');?>
 
    <div class="ad">
-       <a class="icon_btn float_right" href="index.php?r=killEnd"><div href="#">立刻创建我的血战</div></a>
+       <a class="icon_btn float_right" href="index.php?r=killEnd">立刻创建我的血战</a>
        <div class="clear"></div>
 
    </div>

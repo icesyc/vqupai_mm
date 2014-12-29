@@ -27,6 +27,13 @@ footer{position:absolute;bottom:-1px;height:35px;width:100%;}
 .btn_bt_a{position:absolute;left:0px;right:0px;top:0px;bottom:0px;margin:auto;width:97px; height:15px;font-size: 14px;color:white;text-decoration: none;text-align: center;z-index:99999999;}
 .container{overflow:auto;z-index:1;-webkit-overflow-scrolling:touch;}   
 .order_dis{width:100%;height:25px;margin:20px auto;background:#ff2a61;color:white;text-align:center;font-size:14px;padding-top: 8px;}
+.wechatdis img{
+max-width: 100%;
+display: block;
+border: none;
+margin: 0;
+padding: 0;
+}
 </style>
 </head>
 <body>
@@ -42,7 +49,7 @@ footer{position:absolute;bottom:-1px;height:35px;width:100%;}
 </div>
 <?php endif;?>
           <div class="mg_t10"><img src="<?php echo $item['pic_top'];?>" width="320" height="200"> </div>
-          <div class="wechatdis mg_auto w_320">
+          <div class="wechatdis mg_auto w_320 noPadding">
           <p>【商品信息】</p>
           <?php echo $item['content'];?>
           </div>

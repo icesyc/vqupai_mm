@@ -162,3 +162,11 @@ a.icon_btn,a.icon_btn:visited{background: url("../images-share/icon_btn.png") no
 .plist_shuo li{line-height: 20px;word-spacing: normal;word-break: break-all;}
 .prop-btn{background: #ff2a61;width:100%;height: 25px;text-align: center;color:white;padding-top: 13px;font-size: 14px;display:block;text-decoration: none;}
 .fleft{float:left;}
+.fright{float:right;}
+.myauction{border:1px solid #efefef;margin-bottom: 10px;background: white;}
+.orderlist {margin: 10px;}
+.orderlist .fleft ul li { margin-top: 5px;}
+.order_dis {margin: 10px;border: 1px solid #efefef; background: #f9f9f9;height: 50px;}
+.card-img {float: left;width: 40px;margin: 5px;display: block;}
+.order_dis .fright {float:left;width:220px; margin-left: 10px;padding: 5px;word-break: break-all;color: #898294;line-height: 1.3;}
+

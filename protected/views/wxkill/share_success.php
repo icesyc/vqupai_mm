@@ -38,7 +38,7 @@
                     <div class="pro_zhe">最终战果<br><div class="font_18 pad_t5"><?php echo $auction['curr_price'];?></div></div>
                     <div class="clear"></div>
                 </li>
-                <li class="align_center"><a href="index.php?r=killEnd"><input type="button" class="btn_kill2"/></a><br></li>
+                <li class="align_center"><a href="<?php echo $this->killEndUrl;?>"><input type="button" class="btn_kill2"/></a><br></li>
                 <li></li>
                 <li></li>
 
@@ -102,7 +102,7 @@ WeixinApi.ready(function(Api){
 
   Api.shareToFriend(wxData, wxCallbacks);
   Api.shareToTimeline(wxData, wxCallbacks);
-
+  alert(WeixinApi);
 });
 </script>
 </body>

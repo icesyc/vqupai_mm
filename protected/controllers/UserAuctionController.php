@@ -8,6 +8,8 @@ class UserAuctionController extends Controller
 {
 	public $layout = false;
 
+	public $killEndUrl = 'http://mp.weixin.qq.com/s?__biz=MzA4NjM4NDEzNQ==&mid=201700083&idx=1&sn=23be827a5748fb286d7270bfddadd8e7';
+
 	public function init(){
 		//return;
 		Yii::app()->session->open();

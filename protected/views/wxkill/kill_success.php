@@ -32,7 +32,7 @@
                 <li class="color364 align_center">当前价格</li>
                 <li class="colorff2 align_center font_18"><?php echo $user_auction['curr_price'];?></li>
                 <li style="width: 200px;margin:auto;text-align:center">
-                    <a href="index.php?r=killEnd"><input type="button"  class="btn_kill3"/></a>
+                    <a href="<?php echo $this->killEndUrl;?>"><input type="button"  class="btn_kill3"/></a>
                 </li>
                 <li class="color364 align_center">立刻下载微趣拍APP，拥有自己的一元商品！</li>
                 <li class="pro">

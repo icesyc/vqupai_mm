@@ -15,7 +15,7 @@
    <?php $this->widget('AdWidget');?>
 
    <div class="ad">
-       <a class="icon_btn float_right" href="index.php?r=killEnd">立刻创建我的血战</a>
+       <a class="icon_btn float_right" href="<?php echo $this->killEndUrl;?>">立刻创建我的血战</a>
        <div class="clear"></div>
 
    </div>
@@ -133,7 +133,7 @@ WeixinApi.ready(function(Api){
 
   Api.shareToFriend(wxData, wxCallbacks);
   Api.shareToTimeline(wxData, wxCallbacks);
-
+  alert(Api);
 });
 </script>
  </body>

@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="css/share.css" />
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/WeixinApi.js"></script>
+    <script type="text/javascript" src="js/WeixinApi.js?v=4.1"></script>
 </head>
 <body>
 
@@ -131,8 +131,17 @@ WeixinApi.ready(function(Api){
     },
   };
 
-  Api.shareToFriend(wxData, wxCallbacks);
-  Api.shareToTimeline(wxData, wxCallbacks);
+    // 用户点开右上角popup菜单后，点击分享给好友，会执行下面这个代码
+    Api.shareToFriend(wxData, wxCallbacks);
+
+    // 点击分享到朋友圈，会执行下面这个代码
+    Api.shareToTimeline(wxData, wxCallbacks);
+
+    // 点击分享到腾讯微博，会执行下面这个代码
+    Api.shareToWeibo(wxData, wxCallbacks);
+
+    // iOS上，可以直接调用这个API进行分享，一句话搞定
+    Api.generalShare(wxData,wxCallbacks);
 
 });
 </script>

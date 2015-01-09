@@ -11,10 +11,6 @@ class MyPropController extends Controller
 		$user = $this->wechatLogin();
 		$auctionId = $this->getInt('auction_id');
 
-		if(!$auctionId){
-			$this->error(111, '参数错误');
-		}
-
 		$user = $this->wechatLogin();
 		$uid = $user->id;
 		$critera = new CDbCriteria;

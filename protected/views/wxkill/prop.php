@@ -43,6 +43,9 @@
 <script type="text/javascript">
 var auction_id = <?php echo $auction_id ?>;
 $('.j-prop-item').on('click', function(e){
+    if(auction_id == 0){
+        return;
+    }
     var url = 'index.php?r=myProp/use&prop_id=' + $(this).data('id') + '&auction_id=' + window.auction_id;
     $.get(url, function(rsp){
         $('#msg_tip').toast(rsp.msg);

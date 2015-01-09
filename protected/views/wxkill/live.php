@@ -65,8 +65,8 @@
              <div class="friend">
                  <aside class="bottom1">
                      <ul>
-                         <li style="text-align: right;padding-right:5px;padding-top:15px;">sdfasdf</li>
-                         <li style="padding-left:25px;width:20%;"><img src="images-share/100.jpgimages-share/100.jpg" width="40" /></li>
+                         <li style="text-align: right;padding-right:5px;padding-top:15px;"><?php echo $helper['user']['nick'];?></li>
+                         <li style="padding-left:25px;width:20%;"><img src="<?php echo $helper['user']['avatar'];?>" width="40" /></li>
                          <li style="text-align: left;width:40%;padding-top:15px;"><?php echo $helper['discount']?>元&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $helper['ctime']?></li>
                          <div class="clear"></div>
                      </ul>

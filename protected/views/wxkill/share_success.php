@@ -102,7 +102,6 @@ WeixinApi.ready(function(Api){
 
   Api.shareToFriend(wxData, wxCallbacks);
   Api.shareToTimeline(wxData, wxCallbacks);
-  alert(WeixinApi);
 });
 </script>
 </body>

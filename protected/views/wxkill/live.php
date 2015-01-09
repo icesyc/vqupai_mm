@@ -141,7 +141,6 @@ function reportWapShare(){
   img.src = url + '&_=' + Math.random();
 }
 
-WeixinApi.enableDebugMode();
 WeixinApi.ready(function(Api){
   var wxData={
     imgUrl:"http://www.vqupai.com/<?php echo $data['item']['pic_cover'];?>",

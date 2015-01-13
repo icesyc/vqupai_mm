@@ -15,7 +15,7 @@ class ShowItemController extends Controller
 	//商品详情
 	public function actionIndex(){
 		$data = array();
-		if(!$_GET['token'])
+		if(!isset($_GET['token']))
 			$_GET['token'] = '';
 		$data['token'] = $_GET['token'];
 
@@ -84,6 +84,7 @@ class ShowItemController extends Controller
 			Yii::app()->end();
 		}
 		$data['token'] = $_GET['token'];
+		$err_msg = '';
 
 		if(isset($_POST['consignee'])) {
 			$consignee = $_POST['consignee'];
@@ -191,6 +192,7 @@ class ShowItemController extends Controller
 				$data['order'] = $order;
 				$data['item'] = $item;
 				$data['auction'] = $auction;
+				$data['err_msg'] = $err_msg;
 
 				$this->render('/v2/order_show', $data);
 			}

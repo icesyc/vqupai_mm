@@ -75,12 +75,14 @@
      </div>
 
  </section>
+<div id="msg_tip"></div>
  <div class="downbtn"></div>
  <div class="logo_bt float_left"></div>
  <div class="text_bt float_left">不够爽？来APP杀个痛快！</div>
  <div class="btn_bt float_right"></div>
 <a href="http://www.vqupai.com/d.php?s=wap&c=3&uid=<?php echo $user['id'];?>" class="btn_bt_a">立刻下载</a>
 <input type="hidden" id="auctionId" value="<?php echo $auction['id'];?>"/>
+
 
 <script type='text/javascript'>
 var url="/ver/i.gif?report=js&c=ua&<?php echo http_build_query($loger)?>";

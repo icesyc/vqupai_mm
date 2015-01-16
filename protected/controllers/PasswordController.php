@@ -199,7 +199,7 @@ class PasswordController extends Controller
 		$sendContent="您申请重置密码的验证码为：".$verifyCode."。有效期";
 		$sendContent.=intval($expireDuration/60);
 		$sendContent.="分钟，请及时使用。【微趣拍】";
-		if ($this->sendSms($mobile, $sendContent)) {
+		if (SMS::send($mobile, $sendContent)) {
 			echo '{"code":"200","status":"success","desc":"验证码已发送到您的手机"}';
 			return true;
 		} else {
@@ -297,12 +297,6 @@ class PasswordController extends Controller
 	private function genVerifyCode() {
 		$code=mt_rand(100000,999999);
 		return $code;
-	}
-
-	private function sendSms($sendTo, $sendContent) {
-		require('sendSMS2.php');
-		return $res=doSMS($sendTo, $sendContent);
-//		return false;
 	}
 
 	/**

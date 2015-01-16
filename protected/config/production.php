@@ -71,7 +71,7 @@ return array(
 		),
 		*/
 		'db'=>array(
-			'connectionString' => 'mysql:host=rdsbyqirjbyqirj.mysql.rds.aliyuncs.com;dbname=vqupai',
+			'connectionString' => 'mysql:host=rdsvzuubavebvzi.mysql.rds.aliyuncs.com;dbname=vqupai',
 			'emulatePrepare' => true,
 			'username' => 'ilovevqp',
 			'password' => 'h0wmuchdoyoulove',

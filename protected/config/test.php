@@ -14,7 +14,7 @@ return CMap::mergeArray(
         		'httpsqs_auth' => 'We1qupa!'
         	),
 			'db'=>array(
-				'connectionString'=>'mysql:host=rdsbyqirjbyqirj.mysql.rds.aliyuncs.com;dbname=vqupai_test',
+				'connectionString'=>'mysql:host=rdsvzuubavebvzi.mysql.rds.aliyuncs.com;dbname=vqupai_test',
 			),
 		),
 	)

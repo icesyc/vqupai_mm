@@ -190,6 +190,9 @@ class Controller extends CController
 	}
 
 	public function getImageBySize($path, $size){
+		if(strpos($path, 'http:') === 0){
+			return $path;
+		}
 		$basename = basename($path);
 		$dirname = dirname($path);
 		return $dirname . "/" .  $size . "." . $basename;

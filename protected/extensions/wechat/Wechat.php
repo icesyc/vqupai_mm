@@ -22,6 +22,11 @@ class Wechat {
 	private $appId = 'wx0d6e23dc148c5034';
 	private $appKey = '32cd3d6accfeff6490dfdd8b7c0b8882';
 
+	const CACHE_ACCESS_TOKEN = "mp.wechat.access_token";
+	const CACHE_TIKET = "mp.wechat.jsticket";
+
+	public $lastError;
+
 	public function __construct($config=array()){
 		isset($config['appId']) && $this->appId = $config['appId'];
 		isset($config['appKey']) && $this->appKey = $config['appKey'];
@@ -64,7 +69,11 @@ class Wechat {
 		$json = HttpClient::get($url);
 		if(!$json) return false;
 		$json = json_decode($json, true);
-		return isset($json['errcode']) ? false : $json;
+		if(isset($json['errcode']) && $json['errcode'] > 0){
+			$this->lastError = $json['errmsg'];
+			return false;
+		}
+		return $json;
 	}
 
 	//第三步，根据openId和token获取用户信息
@@ -91,6 +100,105 @@ class Wechat {
 		$json = HttpClient::get($url);
 		if(!$json) return false;
 		$json = json_decode($json, true);
-		return isset($json['errcode']) ? false : $json;
+		if(isset($json['errcode']) && $json['errcode'] > 0){
+			$this->lastError = $json['errmsg'];
+			return false;
+		}
+		return $json;
+	}
+
+	/**
+	 * 获取jsticket
+	 *
+	 * @param string $token access token
+	 * @return 
+	 */
+	public function getTicket($token=null){
+		$cache = $this->getCache(self::CACHE_TIKET);
+		if($cache){
+			return $cache['ticket'];
+		}
+		$token = $token ?: $this->getAccessToken();
+		if(!$token){
+			return false;
+		}
+		$url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?';
+		$param['access_token'] = $token;
+		$param['type'] = 'jsapi';
+		$url = $url . http_build_query($param);
+		$json = HttpClient::get($url);
+		if(!$json){
+			return false;	
+		}
+		$json = json_decode($json, true);
+		if(isset($json['errcode']) && $json['errcode'] > 0){
+			$this->lastError = $json['errmsg'];
+			return false;
+		}
+		$this->setCache(self::CACHE_TIKET, $json);
+		return $json['ticket'];
+	}
+
+	/**
+	 * 公众平台获取全局access_token
+	 *
+	 */
+	public function getAccessToken(){
+		$cache = $this->getCache(self::CACHE_ACCESS_TOKEN);
+		if($cache){
+			return $cache['access_token'];
+		}
+		$url = 'https://api.weixin.qq.com/cgi-bin/token?';
+		$param['grant_type'] = 'client_credential';
+		$param['appid'] = $this->appId;
+		$param['secret'] = $this->appKey;
+		$url = $url . http_build_query($param);
+		$json = HttpClient::get($url);
+		if(!$json) return false;
+		$json = json_decode($json, true);
+		if(isset($json['errcode']) && $json['errcode'] > 0){
+			$this->lastError = $json['errmsg'];
+			return false;
+		}
+		$this->setCache(self::CACHE_ACCESS_TOKEN, $json);
+		return $json['access_token'];
+	}
+
+	//对url进行签名
+	public function sign($ticket, $url){
+		$param['jsapi_ticket'] = $ticket;
+		$param['timestamp'] = time();
+		$param['noncestr'] = uniqid();
+		$param['url'] = $url;
+		ksort($param);
+		$str = urldecode(http_build_query($param));
+		$param['signature'] = sha1($str);
+		$param['appId'] = $this->appId;
+		$param['nonceStr'] = $param['noncestr'];
+		unset($param['jsapi_ticket'], $param['url'], $param['noncestr']);
+		return $param;
+	}
+
+	//获取缓存的access_token数据
+	public function getCache($file){
+
+		$file = sys_get_temp_dir() . "/" . $file;
+		if(!file_exists($file)){
+			return false;
+		}
+		$json = json_decode(file_get_contents($file), true);
+		if(!$json){
+			return false;
+		}
+		if(time() - filemtime($file) > $json['expires_in']){
+			return false;
+		}
+		return $json;
+	}
+
+	public function setCache($file, $data){
+		$file = sys_get_temp_dir() . "/" . $file;
+		$data = json_encode($data);
+		return file_put_contents($file, $data);
 	}
 }

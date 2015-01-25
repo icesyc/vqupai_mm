@@ -15,8 +15,6 @@ scp -r protected/views root@$SERVER:/alidata/www/vqupai/$HOST/protected/
 scp -r protected/components root@$SERVER:/alidata/www/vqupai/$HOST/protected/
 scp -r $INDEX_FILE root@$SERVER:/alidata/www/vqupai/$HOST/index.php
 scp -r protected/config/production.php root@$SERVER:/alidata/www/vqupai/$HOST/protected/config/main.php
-
-#scp -r protected/components root@$SERVER:/alidata/www/vqupai/$HOST/protected
 #scp -r protected/extensions root@$SERVER:/alidata/www/vqupai/$HOST/protected
 #scp -r css root@$SERVER:/alidata/www/vqupai/$HOST/
-scp -r js root@$SERVER:/alidata/www/vqupai/$HOST/
+#scp -r js root@$SERVER:/alidata/www/vqupai/$HOST/

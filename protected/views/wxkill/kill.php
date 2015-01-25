@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="css/share.css" />
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/WeixinApi.js?v=4.1"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 </head>
 <body>
 
@@ -119,32 +119,19 @@ function reportSecondShare(){
   img.src = url + '&_=' + Math.random();
 }
 
-WeixinApi.ready(function(Api){
+wx.config(<?php echo json_encode(Yii::app()->session['wxconfig']); ?>);
+wx.ready(function(){
   var wxData={
     imgUrl:"http://www.vqupai.com/<?php echo $item['pic_cover'];?>",
     link:"http://www.vqupai.com/mm/index.php?r=userAuction&id=<?php echo $auction['id'];?>&second_share=1",
     desc:"人多力量大！各位亲朋好友，快来帮我把它杀到<?php echo $auction['reserve_price'];?>元吧！（猛戳这里）",
-    title:"微趣拍血战到底，大家一起来杀价！"
+    title:"微趣拍血战到底，大家一起来杀价！",
+    success: function(){
+      reportWapShare();
+    }
   };
-
-  var wxCallbacks={
-    confirm:function(resp){
-      reportSecondShare();
-    },
-  };
-
-    // 用户点开右上角popup菜单后，点击分享给好友，会执行下面这个代码
-    Api.shareToFriend(wxData, wxCallbacks);
-
-    // 点击分享到朋友圈，会执行下面这个代码
-    Api.shareToTimeline(wxData, wxCallbacks);
-
-    // 点击分享到腾讯微博，会执行下面这个代码
-    Api.shareToWeibo(wxData, wxCallbacks);
-
-    // iOS上，可以直接调用这个API进行分享，一句话搞定
-    Api.generalShare(wxData,wxCallbacks);
-
+  wx.onMenuShareTimeline(wxData);
+  wx.onMenuShareAppMessage(wxData);
 });
 </script>
  </body>

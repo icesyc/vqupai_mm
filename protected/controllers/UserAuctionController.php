@@ -11,11 +11,17 @@ class UserAuctionController extends Controller
 	public $killEndUrl = 'http://mp.weixin.qq.com/s?__biz=MzA4NjM4NDEzNQ==&mid=201700083&idx=1&sn=23be827a5748fb286d7270bfddadd8e7';
 
 	public function init(){
-		//return;
 		Yii::app()->session->open();
 		if(!isset(Yii::app()->session['open_id'])){
 			$this->requestOpenId();
 		}
+		//获取jsticket
+		$wechat = new Wechat;
+		$ticket = $wechat->getTicket();
+		$url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$config = $wechat->sign($ticket, $url);
+		$config['jsApiList'] = ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage'];
+		Yii::app()->session['wxconfig'] = $config;
 	}
 
 	public function requestOpenId(){
@@ -29,6 +35,7 @@ class UserAuctionController extends Controller
 		if(!$openInfo){
 			$this->error(111, 'invalid request');
 		}
+
 		Yii::app()->session['open_id'] = $openInfo['openid'];
 	}
 

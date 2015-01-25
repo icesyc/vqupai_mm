@@ -10,6 +10,13 @@ class KillEndController extends Controller
 	public $assetUrl;
 
 	public function init(){
+		Yii::import('application.extensions.wechat.*');
+		$wechat = new Wechat;
+		$ticket = $wechat->getTicket();
+		$url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$config = $wechat->sign($ticket, $url);
+		$config['jsApiList'] = ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage'];
+		Yii::app()->session['wxconfig'] = $config;
 	}
 
 	//血战列表

@@ -28,6 +28,7 @@
 .item_img{padding: 1px; display: inline-block; margin-right: 5px; vertical-align:middle;}
 .item_title{display: inline-block; width: 220px;}
 .price_text{width: 95%; text-align: right;}
+.consignee_submit{position: relative;margin:auto;bottom:3px;opacity:0.8;filter:alpha(opacity=70);background: #ff2a61;width:94px;height:27px;border:1px solid #bfbfbf;text-decoration: none;color:white;margin:auto;border-radius: 4px; text-align:center;z-index:999999;}
 input{padding: 3px 3px;
 width: 97%;
 line-height: 24px;
@@ -54,6 +55,11 @@ margin-bottom: 8px;}
       <div class="price_text">
         <br>订单号码：<span class="wechatcolor"><?php echo $order['id'];?></span>
          订单金额：￥<span class="wechatcolor"><?php echo $order['total_pay'];?></span>
+      </div>
+      <div class="price_text">
+        <br>
+        <a class="consignee_submit" href="http://m.vqupai.com/?r=appv2/pay&id=<?php echo $order->id;?>&payment=alipay&token=<?php echo $token;?>">支付宝支付</a>
+        <a class="consignee_submit" href="http://m.vqupai.com/?r=appv2/pay&id=<?php echo $order->id;?>&payment=umpay&token=<?php echo $token;?>">网银支付</a>
       </div>
   <h3 style="padding-left:10px;">收货信息</h3>
   <h3 style="padding-left:10px;color:red;"><?php echo $err_msg;?></h3>

@@ -10,20 +10,20 @@
     <script type="text/javascript" src="http://m.vqupai.com/static/js/area.js"></script>
     <script>
 	 $(function(){
-		      $(".container").css("height",$(window).height();)	 
+		      $(".container").css("height",$(window).height());	 
 			 })
 	</script>
 	<style type="text/css">
 	html,body{height:100%;overflow:hidden;}
 	footer{position:absolute;bottom:-1px;height:35px;width:100%;}
-.downbtn{width:100%;position: relative;background:#000000;opacity:0.5;filter:alpha(opacity=50);height:35px;z-index:99;text-align: center;}
-.btn_bt{position: absolutee;margin:auto;left:0; right:0;  bottom:0px;top:0px;opacity:0.8;filter:alpha(opacity=70);background: #ff2a61;width:94px;height:27px;border:1px solid #bfbfbf;text-decoration: none;color:white;margin:auto;border-radius: 4px; text-align:center;z-index:999999;}
+.downbtn{width:100%;background:#000000;position:relative;opacity:0.5;filter:alpha(opacity=50);height:35px;z-index:99;text-align: center;}
+.btn_bt{position: absolute;margin:auto;left:0; right:0;  bottom:0px;top:0px;opacity:0.8;filter:alpha(opacity=70);background: #ff2a61;width:94px;height:27px;border:1px solid #bfbfbf;text-decoration: none;color:white;margin:auto;border-radius: 4px; text-align:center;z-index:999999;}
 .btn_bt_a{position: absolute;margin:auto;left:0; right:0;  bottom:0px;top:0px;width:97px; height:15px;font-size: 14px;color:white;text-decoration: none;text-align: center;z-index:99999999;}
 .container{overflow:auto;-webkit-overflow-scrolling:touch;}
-.btn_bt_2{position: fixed;margin:auto;left:50; right:0;  bottom:3px;opacity:0.8;filter:alpha(opacity=70);background: #ff2a61;width:94px;height:27px;border:1px solid #bfbfbf;text-decoration: none;color:white;margin:auto;border-radius: 4px; text-align:center;z-index:999999;}
-.btn_bt_3{position: fixed;margin:auto;left:0; right:50;  bottom:3px;opacity:0.8;filter:alpha(opacity=70);background: #ff2a61;width:94px;height:27px;border:1px solid #bfbfbf;text-decoration: none;color:white;margin:auto;border-radius: 4px; text-align:center;z-index:999999;}
-.btn_bt_b{position: fixed;margin:auto;left:50; right:0;  bottom:10px;width:97px; height:15px;font-size: 14px;color:white;text-decoration: none;text-align: center;z-index:99999999;}
-.btn_bt_c{position: fixed;margin:auto;left:0; right:50;  bottom:10px;width:97px; height:15px;font-size: 14px;color:white;text-decoration: none;text-align: center;z-index:99999999;}
+.btn_bt_2{position:absolute;top:3px;border:1px solid red;left:5px; opacity:0.8;filter:alpha(opacity=70);background: #ff2a61;width:94px;height:27px;border:1px solid #bfbfbf;text-decoration: none;color:white;margin:auto;border-radius: 4px; text-align:center;z-index:999999;}
+.btn_bt_3{position:absolute;right:5px;top:3px;border:1px solid red; opacity:0.8;filter:alpha(opacity=70);background: #ff2a61;width:94px;height:27px;border:1px solid #bfbfbf;text-decoration: none;color:white;margin:auto;border-radius: 4px; text-align:center;z-index:999999;}
+.btn_bt_b{left:3px; position:absolute; border:1px solid transparent; top:8px;width:97px; height:15px;font-size: 14px;color:white;text-decoration: none;text-align: center;z-index:99999999;}
+.btn_bt_c{right:5px;  position:absolute;top:8px;width:97px;border:1px solid transparent;height:15px;font-size: 14px;color:white;text-decoration: none;text-align: center;z-index:99999999;}
 .item_area{width: 95%;background-color: #f5f5f5; padding: 5px; margin: 3px;}
 .item_img{padding: 1px; display: inline-block; margin-right: 5px; vertical-align:middle;}
 .item_title{display: inline-block; width: 220px;}
@@ -55,11 +55,6 @@ margin-bottom: 8px;}
       <div class="price_text">
         <br>订单号码：<span class="wechatcolor"><?php echo $order['id'];?></span>
          订单金额：￥<span class="wechatcolor"><?php echo $order['total_pay'];?></span>
-      </div>
-      <div class="price_text">
-        <br>
-        <a class="consignee_submit" href="http://m.vqupai.com/?r=appv2/pay&id=<?php echo $order->id;?>&payment=alipay&token=<?php echo $token;?>">支付宝支付</a>
-        <a class="consignee_submit" href="http://m.vqupai.com/?r=appv2/pay&id=<?php echo $order->id;?>&payment=umpay&token=<?php echo $token;?>">网银支付</a>
       </div>
   <h3 style="padding-left:10px;">收货信息</h3>
   <h3 style="padding-left:10px;color:red;"><?php echo $err_msg;?></h3>
